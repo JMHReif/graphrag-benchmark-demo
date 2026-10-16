@@ -1,0 +1,16 @@
+-  *   mvn compile exec:java -Dexec.args=seed     -- (re)seed the demo graph
+-  *   mvn compile exec:java                      -- GraphRAG: sanity question + full benchmark
+-  *   mvn compile exec:java -Dexec.args=vector    -- Vector-only baseline: sanity question + full benchmark
+-  *
+-  * Requires a running Neo4j (5.x, with vector index support) and an
+-  * OPENAI_API_KEY. See README.md for both.
+-  */
++  *   mvn compile exec:java -Dexec.args=seed     -- (re)seed the demo graph
++  *   mvn compile exec:java                      -- GraphRAG: sanity question + full benchmark
++  *   mvn compile exec:java -Dexec.args=vector    -- Vector-only baseline: sanity question + full benchmark
++  *   mvn compile exec:java -Dexec.args=jev       -- GraphRAG, graded by the Jev judge instead of the default judge
++  *
++  * Requires a running Neo4j (5.x, with vector index support) and an
++  * OPENAI_API_KEY. See README.md for both. The `jev` run additionally
++  * requires JEV_API_KEY (see Config).
++  */

@@ -1,0 +1,13 @@
+id,category,correctness,faithfulness,hallucination_risk,question
+Q1,simple_factual,1.99,0.76,false,"Which release fixed the SAML SSO login timeout bug?"
+Q2,simple_factual,1.98,1.1,false,"What is BUG-103 about, and is it fixed?"
+Q3,multi_hop,1.25,0.99,false,"Which customers were affected by the SSO login timeout bug?"
+Q4,multi_hop,1.99,0.92,false,"Umbrella Labs filed a ticket about a bug -- has that bug been fixed, and if so, in which release?"
+Q5,multi_hop,0.0,0.03,false,"Which open bugs affect customers on the Enterprise tier?"
+Q6,comparison_aggregation,1.99,0.77,false,"Which reported bugs have been fixed, and which are still open?"
+Q7,comparison_aggregation,1.97,1.02,false,"Compare the support SLA response time for Enterprise vs. Starter tier customers."
+Q8,temporal,1.96,0.63,false,"What changed between Aurora 3.1 and Aurora 3.2?"
+Q9,temporal,1.9,0.96,false,"Was the webhook duplication bug fixed before or after Aurora 3.2 shipped?"
+Q10,unanswerable,1.12,1.97,false,"What's the refund policy on hardware purchases?"
+Q11,unanswerable,1.88,1.99,false,"Who is Aurora's current VP of Engineering?"
+Q12,multi_hop,1.5,0.69,false,"What features does Aurora have, and which of them have had reported bugs?"

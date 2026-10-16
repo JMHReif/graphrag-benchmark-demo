@@ -1,0 +1,32 @@
+-     /** Finds graph entities whose name/id/version is literally named in the question text. */
+-     private Set<String> findEntitiesNamedInQuestion(Session session, String questionText) {
+-         String lowerQuestion = questionText.toLowerCase();
+-         List<Record> rows = session.run("""
+-                 MATCH (e)
+-                 WHERE e:Product OR e:Feature OR e:Release OR e:Bug OR e:Customer OR e:Policy
+-                 RETURN elementId(e) AS id, coalesce(e.name, e.id, e.version) AS label
+-                 """).list();
+- 
+-         Set<String> matches = new HashSet<>();
+-         for (Record row : rows) {
+-             String label = row.get("label").asString(null);
+-             if (label != null && label.length() > 2 && lowerQuestion.contains(label.toLowerCase())) {
+-                 matches.add(row.get("id").asString());
+-             }
+-         }
+-         return matches;
+-     }
+- 
+-     /** True if any entity a chunk MENTIONS is the named entity itself or within two hops of it. */
+-     private boolean isNearNamedEntity(Session session, String chunkId, Set<String> namedEntityIds) {
+-         return session.run("""
+-                 MATCH (c:Chunk {id: $chunkId})-[:MENTIONS]->(entity)
+-                 MATCH path = (entity)-[*0..2]-(other)
+-                 WHERE elementId(other) IN $namedIds
+-                 RETURN count(*) > 0 AS found
+-                 """, Map.of("chunkId", chunkId, "namedIds", List.copyOf(namedEntityIds)))
+-                 .single().get("found").asBoolean();
+-     }
+- 
+-     /**
++     /**

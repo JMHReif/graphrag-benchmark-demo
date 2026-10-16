@@ -1,0 +1,6 @@
+-     private static double average(List<ScoredAnswer> results, java.util.function.ToIntFunction<ScoredAnswer> f) {
+-         return results.stream().mapToInt(f).average().orElse(0);
+-     }
++     private static double average(List<ScoredAnswer> results, java.util.function.ToDoubleFunction<ScoredAnswer> f) {
++         return results.stream().mapToDouble(f).average().orElse(0);
++     }

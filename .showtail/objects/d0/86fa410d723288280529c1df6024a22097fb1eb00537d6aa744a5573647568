@@ -1,0 +1,4 @@
+Both replacements stay anchored in chunk text (so vector search can actually find them) but still require crossing documents via the graph — the actual thing GraphRAG is supposed to prove out.
+
+- **Q6** (comparison_aggregation): aggregates bug-status facts that are each stated in a release note or known-issue chunk — pure prose synthesis, no ticket/customer join.
+- **Q12** (multi_hop): starts from a specific fixed bug (mentioned in a chunk), then needs the Feature→Product→sibling-Features hop to find Aurora's other features and their own bugs — a real "graph connects facts a single passage can't express" case, without relying on an entity (like a customer name) that never appears in any chunk.

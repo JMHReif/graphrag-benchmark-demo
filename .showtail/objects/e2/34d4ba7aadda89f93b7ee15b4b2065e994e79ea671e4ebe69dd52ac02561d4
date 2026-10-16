@@ -1,0 +1,6 @@
+Compiles clean. Now each run writes two files with matching timestamps to `results/`:
+
+- `scorecard-<runLabel>-<timestamp>.csv` — unchanged, the per-question score rows
+- `report-<runLabel>-<timestamp>.txt` — new, the same detailed report that prints to console (per-question Q/A, judge rationale, category averages, overall summary)
+
+Whenever you run the benchmark yourself, both will land side by side so you can review the judging without having to scroll back through terminal output.

@@ -1,0 +1,86 @@
+$ source /Users/jenniferreif/Projects/graphrag-benchmark-demo/env.sh && neo4j-cli query "MATCH (c:Chunk {id:'C1'})-[:MENTIONS]->(entity) OPTIONAL MATCH path = (entity)-[rels*1..2]-(other) WHERE path IS NULL OR ALL(rel IN rels WHERE type(rel) <> 'MENTIONS') RETURN entity.id AS entityId, [n IN nodes(path) | coalesce(n.id, n.name, n.version)] AS chain" --env /Users/jenniferreif/Projects/graphrag-benchmark-demo/env.sh --format toon
+echo "---C5 policy check---"
+source /Users/jenniferreif/Projects/graphrag-benchmark-demo/env.sh && neo4j-cli query "MATCH (c:Chunk {id:'C5'})-[:MENTIONS]->(entity) OPTIONAL MATCH path = (entity)-[rels*1..2]-(other) WHERE path IS NULL OR ALL(rel IN rels WHERE type(rel) <> 'MENTIONS') RETURN entity.name AS entityName, path IS NULL AS pathIsNull" --env /Users/jenniferreif/Projects/graphrag-benchmark-demo/env.sh --format toon
+
+```
+A newer neo4j-cli is available: v1.10.0 (you have v1.8.0). Run `neo4j-cli update` to upgrade.
+arrays_truncated: 0
+columns[#2]: entityId,chain
+rows[#34]:
+  - chain[#2]: SSO Login,Aurora
+    entityId: null
+  - chain[#3]: SSO Login,Aurora,Scheduled Workflows
+    entityId: null
+  - chain[#3]: SSO Login,Aurora,Webhook Triggers
+    entityId: null
+  - chain[#3]: SSO Login,Aurora,Aurora 3.0
+    entityId: null
+  - chain[#3]: SSO Login,Aurora,Aurora 3.1
+    entityId: null
+  - chain[#3]: SSO Login,Aurora,Aurora 3.2
+    entityId: null
+  - chain[#3]: SSO Login,Aurora,Acme Corp
+    entityId: null
+  - chain[#3]: SSO Login,Aurora,Globex
+    entityId: null
+  - chain[#3]: SSO Login,Aurora,Umbrella Labs
+    entityId: null
+  - chain[#2]: SSO Login,BUG-101
+    entityId: null
+  - chain[#3]: SSO Login,BUG-101,Aurora 3.2
+    entityId: null
+  - chain[#3]: SSO Login,BUG-101,TCK-501
+    entityId: null
+  - chain[#3]: SSO Login,BUG-101,TCK-502
+    entityId: null
+  - chain[#2]: Aurora 3.2,Aurora
+    entityId: null
+  - chain[#3]: Aurora 3.2,Aurora,SSO Login
+    entityId: null
+  - chain[#3]: Aurora 3.2,Aurora,Scheduled Workflows
+    entityId: null
+  - chain[#3]: Aurora 3.2,Aurora,Webhook Triggers
+    entityId: null
+  - chain[#3]: Aurora 3.2,Aurora,Aurora 3.0
+    entityId: null
+  - chain[#3]: Aurora 3.2,Aurora,Aurora 3.1
+    entityId: null
+  - chain[#3]: Aurora 3.2,Aurora,Acme Corp
+    entityId: null
+  - chain[#3]: Aurora 3.2,Aurora,Globex
+    entityId: null
+  - chain[#3]: Aurora 3.2,Aurora,Umbrella Labs
+    entityId: null
+  - chain[#2]: Aurora 3.2,BUG-101
+    entityId: null
+  - chain[#3]: Aurora 3.2,BUG-101,SSO Login
+    entityId: null
+  - chain[#3]: Aurora 3.2,BUG-101,TCK-501
+    entityId: null
+  - chain[#3]: Aurora 3.2,BUG-101,TCK-502
+    entityId: null
+  - chain[#2]: BUG-101,SSO Login
+    entityId: BUG-101
+  - chain[#3]: BUG-101,SSO Login,Aurora
+    entityId: BUG-101
+  - chain[#2]: BUG-101,Aurora 3.2
+    entityId: BUG-101
+  - chain[#3]: BUG-101,Aurora 3.2,Aurora
+    entityId: BUG-101
+  - chain[#2]: BUG-101,TCK-501
+    entityId: BUG-101
+  - chain[#3]: BUG-101,TCK-501,Acme Corp
+    entityId: BUG-101
+  - chain[#2]: BUG-101,TCK-502
+    entityId: BUG-101
+  - chain[#3]: BUG-101,TCK-502,Globex
+    entityId: BUG-101
+truncated: false
+---C5 policy check---
+A newer neo4j-cli is available: v1.10.0 (you have v1.8.0). Run `neo4j-cli update` to upgrade.
+arrays_truncated: 0
+columns[#2]: entityName,pathIsNull
+rows[#1]{entityName,pathIsNull}:
+  Software Support SLA,true
+truncated: false
+```

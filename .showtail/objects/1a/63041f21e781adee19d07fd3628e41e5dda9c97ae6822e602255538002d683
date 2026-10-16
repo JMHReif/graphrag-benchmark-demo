@@ -1,0 +1,57 @@
+-     /** Appends one row per question so you can diff runs over time (before/after a pipeline change). */
+-     public Path writeCsv(List<ScoredAnswer> results, String runLabel) throws IOException {
+-         Path dir = Path.of("results");
+-         Files.createDirectories(dir);
+-         String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss"));
+-         Path file = dir.resolve("scorecard-%s-%s.csv".formatted(runLabel, timestamp));
+- 
+-         StringBuilder csv = new StringBuilder("id,category,correctness,faithfulness,hallucination_risk,question\n");
+-         for (ScoredAnswer r : results) {
+-             csv.append(String.join(",",
+-                     r.question().id(),
+-                     r.question().category(),
+-                     String.valueOf(r.correctness()),
+-                     String.valueOf(r.faithfulness()),
+-                     String.valueOf(r.isHallucinationRisk()),
+-                     "\"" + r.question().question().replace("\"", "'") + "\""
+-             )).append("\n");
+-         }
+-         Files.writeString(file, csv.toString());
+-         return file;
+-     }
++     /** Appends one row per question so you can diff runs over time (before/after a pipeline change). */
++     public Path writeCsv(List<ScoredAnswer> results, String runLabel, String timestamp) throws IOException {
++         Path dir = Path.of("results");
++         Files.createDirectories(dir);
++         Path file = dir.resolve("scorecard-%s-%s.csv".formatted(runLabel, timestamp));
++ 
++         StringBuilder csv = new StringBuilder("id,category,correctness,faithfulness,hallucination_risk,question\n");
++         for (ScoredAnswer r : results) {
++             csv.append(String.join(",",
++                     r.question().id(),
++                     r.question().category(),
++                     String.valueOf(r.correctness()),
++                     String.valueOf(r.faithfulness()),
++                     String.valueOf(r.isHallucinationRisk()),
++                     "\"" + r.question().question().replace("\"", "'") + "\""
++             )).append("\n");
++         }
++         Files.writeString(file, csv.toString());
++         return file;
++     }
++ 
++     /** Same content as {@link #printReport}, saved alongside the CSV so you can review judge rationale later. */
++     public Path writeReport(List<ScoredAnswer> results, String runLabel, String timestamp) throws IOException {
++         Path dir = Path.of("results");
++         Files.createDirectories(dir);
++         Path file = dir.resolve("report-%s-%s.txt".formatted(runLabel, timestamp));
++ 
++         try (PrintStream out = new PrintStream(Files.newOutputStream(file))) {
++             printReport(results, out);
++         }
++         return file;
++     }
++ 
++     public static String timestamp() {
++         return LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss"));
++     }

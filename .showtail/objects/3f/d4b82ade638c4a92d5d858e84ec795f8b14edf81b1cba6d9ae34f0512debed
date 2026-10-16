@@ -1,0 +1,21 @@
+The 2-hop fix works — re-ran the full benchmark against the live OpenAI/Neo4j setup:
+
+| | Before (1-hop) | After (2-hop) |
+|---|---|---|
+| Overall avg correctness | ~1.08/2 | **1.33/2** |
+| Q3 (customers affected) | 0/2 | **2/2** ✅ |
+| Q4 (Umbrella Labs bug) | 1/2 | **2/2** ✅ |
+| Q12 (Globex features) | 0/2 | 1/2 (partial) |
+| Q5 (Enterprise open bugs) | 0/2 | 0/2 (still wrong, different reason) |
+
+Two things remain, both structural rather than more "hop depth" needed:
+
+**Q5 is now wrong for a new reason — noise, not missing data.** I checked the Cypher directly: the correct chain (`BUG-103 → TCK-504 → Globex`, tier Growth) *is* retrieved now. But the 2-hop expansion also pulls in an unrelated chain from the `Webhook Triggers` **Feature** entity: `Feature → Aurora (Product) → Acme Corp (Enterprise)` — true fact, wrong relevance (it just means Acme Corp subscribes to the same product, not that it's affected by this bug). `Product` nodes are a fan-out hub, so hopping through one drags in irrelevant customers. The small chat model then conflates "Enterprise customer connected somehow" with "affected." This is a precision problem, not a hallucination — every fact shown is real.
+
+**Q12 still can't fully ground** — no chunk's text mentions "Globex" or any customer, so vector search never reliably seeds from the right place; it got partial credit this time somewhat by luck (a Feature entity's 2-hop expansion happened to reach Globex via Aurora), and only found Aurora's features, not Beacon's, since the Beacon-side chunk didn't make it into the top-3 vector seeds.
+
+Both are fixable, but they're judgment calls about scope — want me to:
+1. Filter out 2-hop chains that pivot through a `Product` node when the anchor entity isn't itself a `Customer` (fixes Q5's noise), and/or
+2. Add direct entity-name matching (scan the question for literal customer/bug/release names in the graph and seed those nodes directly, not just via chunk vector search) — this is what actually fixes Q12.
+
+Or leave them as-is — they double as a good live-demo talking point about *why* graph modeling and traversal precision matter, not just "add more hops."

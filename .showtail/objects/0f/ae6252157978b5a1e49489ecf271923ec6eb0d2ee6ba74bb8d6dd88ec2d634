@@ -1,0 +1,1 @@
+Found the gap — I widened the vector candidate pool but then unconditionally truncated back to `maxSeedChunks` afterward, even when no entity filter applied. That's why Q6 (no named entity, so no filtering) still only saw 3 chunks and missed BUG-101. Fixing that:

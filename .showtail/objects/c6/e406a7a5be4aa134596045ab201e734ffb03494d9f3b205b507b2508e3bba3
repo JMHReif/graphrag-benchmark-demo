@@ -1,0 +1,2 @@
+-             out.printf("[%s] %-22s correctness=%d/2  faithfulness=%d/2  %s%n",
++             out.printf("[%s] %-22s correctness=%.2f/2  faithfulness=%.2f/2  %s%n",

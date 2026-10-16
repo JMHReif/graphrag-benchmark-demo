@@ -1,0 +1,91 @@
+Read: /Users/jenniferreif/Projects/graphrag-benchmark-demo/src/main/resources/benchmark_questions.json
+
+```
+1	[
+2	  {
+3	    "id": "Q1",
+4	    "category": "simple_factual",
+5	    "question": "Which release fixed the SAML SSO login timeout bug?",
+6	    "goldAnswer": "Aurora 3.2 fixed BUG-101, the SAML SSO login timeout bug.",
+7	    "unanswerable": false
+8	  },
+9	  {
+10	    "id": "Q2",
+11	    "category": "simple_factual",
+12	    "question": "What is BUG-103 about, and is it fixed?",
+13	    "goldAnswer": "BUG-103 is webhook retries duplicating events on slow downstream endpoints. It is still open / unfixed.",
+14	    "unanswerable": false
+15	  },
+16	  {
+17	    "id": "Q3",
+18	    "category": "multi_hop",
+19	    "question": "Which customers were affected by the SSO login timeout bug?",
+20	    "goldAnswer": "Acme Corp and Globex, via tickets TCK-501 and TCK-502.",
+21	    "unanswerable": false
+22	  },
+23	  {
+24	    "id": "Q4",
+25	    "category": "multi_hop",
+26	    "question": "Umbrella Labs filed a ticket about a bug -- has that bug been fixed, and if so, in which release?",
+27	    "goldAnswer": "Yes. Umbrella Labs reported BUG-102 (ticket TCK-503), which was fixed in Aurora 3.1.",
+28	    "unanswerable": false
+29	  },
+30	  {
+31	    "id": "Q5",
+32	    "category": "multi_hop",
+33	    "question": "Which open bugs affect customers on the Enterprise tier?",
+34	    "goldAnswer": "None. The only open bug, BUG-103 (webhook duplication), was reported by Globex, which is on the Growth tier, not Enterprise.",
+35	    "unanswerable": false
+36	  },
+37	  {
+38	    "id": "Q6",
+39	    "category": "comparison_aggregation",
+40	    "question": "How many open tickets does Globex have, and what are they about?",
+41	    "goldAnswer": "One open ticket: TCK-504, about the webhook retry duplication bug (BUG-103).",
+42	    "unanswerable": false
+43	  },
+44	  {
+45	    "id": "Q7",
+46	    "category": "comparison_aggregation",
+47	    "question": "Compare the support SLA response time for Enterprise vs. Starter tier customers.",
+48	    "goldAnswer": "Enterprise customers get a 4-hour first response time. Starter customers get a 2 business day first response time.",
+49	    "unanswerable": false
+50	  },
+51	  {
+52	    "id": "Q8",
+53	    "category": "temporal",
+54	    "question": "What changed between Aurora 3.1 and Aurora 3.2?",
+55	    "goldAnswer": "Aurora 3.1 fixed BUG-102 (scheduled workflows skipping DST transitions). Aurora 3.2 fixed BUG-101 (SAML SSO login timeouts).",
+56	    "unanswerable": false
+57	  },
+58	  {
+59	    "id": "Q9",
+60	    "category": "temporal",
+61	    "question": "Was the webhook duplication bug fixed before or after Aurora 3.2 shipped?",
+62	    "goldAnswer": "Neither -- BUG-103 is still open/unfixed as of the latest release, Aurora 3.2.",
+63	    "unanswerable": false
+64	  },
+65	  {
+66	    "id": "Q10",
+67	    "category": "unanswerable",
+68	    "question": "What's the refund policy on hardware purchases?",
+69	    "goldAnswer": "The knowledge base has no hardware refund policy -- the refund policy only covers Aurora and Beacon software subscriptions. The assistant should say it doesn't have this information rather than inventing a hardware policy.",
+70	    "unanswerable": true
+71	  },
+72	  {
+73	    "id": "Q11",
+74	    "category": "unanswerable",
+75	    "question": "Who is Aurora's current VP of Engineering?",
+76	    "goldAnswer": "The knowledge base contains no personnel or org-chart information. The assistant should say it doesn't know rather than guessing a name.",
+77	    "unanswerable": true
+78	  },
+79	  {
+80	    "id": "Q12",
+81	    "category": "multi_hop",
+82	    "question": "Based on the products Globex subscribes to, which features is it exposed to?",
+83	    "goldAnswer": "Globex subscribes to Aurora and Beacon, so it's exposed to SSO Login, Scheduled Workflows, and Webhook Triggers (Aurora) plus Usage Dashboards (Beacon).",
+84	    "unanswerable": false
+85	  }
+86	]
+87	
+```

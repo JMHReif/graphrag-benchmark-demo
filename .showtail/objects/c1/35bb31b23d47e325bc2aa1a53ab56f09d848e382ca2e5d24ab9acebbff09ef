@@ -1,0 +1,1 @@
+Fair — reverting the entity-matching/filtering machinery and keeping this to a plain top-k vector search. Let's check the actual recall numbers to decide 3 vs 4 honestly rather than guess.

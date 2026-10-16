@@ -1,0 +1,61 @@
+
+====================================================================================================
+BENCHMARK RESULTS
+====================================================================================================
+[Q1] simple_factual         correctness=2.00/2  faithfulness=2.00/2  
+      Q: Which release fixed the SAML SSO login timeout bug?
+      A: The SAML SSO login timeout bug was fixed in Aurora 3.2 (July 1, 2026) with the resolution of BUG-101.
+      judge: The system's answer accurately includes all key facts from the gold reference.
+[Q2] simple_factual         correctness=2.00/2  faithfulness=2.00/2  
+      Q: What is BUG-103 about, and is it fixed?
+      A: BUG-103 is about webhook retries potentially duplicating events when a downstream endpoint responds slowly. The status of this bug is open, and there is no fix scheduled yet.
+      judge: The system's answer accurately reflects the key facts about BUG-103 and its status.
+[Q3] multi_hop              correctness=0.00/2  faithfulness=0.00/2  
+      Q: Which customers were affected by the SSO login timeout bug?
+      A: The affected customers by the SSO login timeout bug (BUG-101) are not specified in the provided information.
+      judge: The system's answer fails to provide the specific customers affected by the bug as required.
+[Q4] multi_hop              correctness=0.00/2  faithfulness=0.00/2  
+      Q: Umbrella Labs filed a ticket about a bug -- has that bug been fixed, and if so, in which release?
+      A: I don't have that information in the knowledge base.
+      judge: The system's answer does not provide any of the key facts from the gold reference.
+[Q5] multi_hop              correctness=0.00/2  faithfulness=0.00/2  
+      Q: Which open bugs affect customers on the Enterprise tier?
+      A: The open bug affecting customers on the Enterprise tier is BUG-103, which involves webhook retries that can duplicate events when a downstream endpoint responds slowly. The status of this bug is open, and there is no fix scheduled yet.
+      judge: The system's answer incorrectly states that BUG-103 affects the Enterprise tier, while the gold reference clarifies it affects the Growth tier.
+[Q6] comparison_aggregation correctness=2.00/2  faithfulness=2.00/2  
+      Q: Which reported bugs have been fixed, and which are still open?
+      A: The following bugs have been fixed:  - BUG-104: Corrected in Beacon 1.4 (June 10, 2026), where usage dashboards undercounted totals for deleted user accounts. - BUG-102: Fixed in Aurora 3.1 (May 15, 2026), where scheduled workflows would silently skip a run during daylight-saving transitions in certain timezones. - BUG-101: Fixed in Aurora 3.2 (July 1, 2026), a critical issue where SAML-based SSO logins would time out after 30 seconds.  The following bug is still open:  - BUG-103: Known issue with webhook retries duplicating events when a downstream endpoint responds slowly. Status: open, no fix scheduled yet.
+      judge: The system's answer accurately lists all fixed and open bugs with correct details.
+[Q7] comparison_aggregation correctness=0.00/2  faithfulness=0.00/2  
+      Q: Compare the support SLA response time for Enterprise vs. Starter tier customers.
+      A: I don't have that information in the knowledge base.
+      judge: The system did not provide any relevant information regarding the SLA response times for Enterprise and Starter tier customers.
+[Q8] temporal               correctness=2.00/2  faithfulness=2.00/2  
+      Q: What changed between Aurora 3.1 and Aurora 3.2?
+      A: Between Aurora 3.1 and Aurora 3.2, the following changes occurred:  - Aurora 3.1 (May 15, 2026) fixed BUG-102, which addressed the issue of scheduled workflows silently skipping a run during daylight-saving transitions in certain timezones. - Aurora 3.2 (July 1, 2026) fixed BUG-101, a critical issue where SAML-based SSO logins would time out after 30 seconds, preventing login failures during SAML redirects.
+      judge: The system's answer accurately reflects the changes between Aurora 3.1 and Aurora 3.2 as stated in the gold reference.
+[Q9] temporal               correctness=2.00/2  faithfulness=2.00/2  
+      Q: Was the webhook duplication bug fixed before or after Aurora 3.2 shipped?
+      A: The webhook duplication bug (BUG-103) was not fixed before Aurora 3.2 shipped, as it remains open with no fix scheduled yet.
+      judge: The system's answer accurately reflects that the webhook duplication bug (BUG-103) remains open and unfixed as of Aurora 3.2.
+[Q10] unanswerable           correctness=0.00/2  faithfulness=0.00/2  
+      Q: What's the refund policy on hardware purchases?
+      A: I don't have that information in the knowledge base.
+      judge: The answer lacks key facts about the refund policy and does not clarify that it only covers software subscriptions.
+[Q11] unanswerable           correctness=2.00/2  faithfulness=2.00/2  
+      Q: Who is Aurora's current VP of Engineering?
+      A: I don't have that information in the knowledge base.
+      judge: The system correctly stated it does not have the information in the knowledge base.
+[Q12] multi_hop              correctness=1.00/2  faithfulness=1.00/2  
+      Q: What features does Aurora have, and which of them have had reported bugs?
+      A: Aurora has features related to scheduled workflows and SAML-based SSO logins. Reported bugs include:  - **BUG-102**: Fixed in Aurora 3.1, where scheduled workflows would silently skip a run during daylight-saving transitions in certain timezones. - **BUG-101**: Fixed in Aurora 3.2, a critical issue where SAML-based SSO logins would time out after 30 seconds.  Additionally, there is a known issue with webhook retries duplicating events (BUG-103), but this is not specific to Aurora.
+      judge: The answer includes some correct features and bugs but misses the complete list of features and their specific bug statuses.
+----------------------------------------------------------------------------------------------------
+simple_factual         avg correctness=2.00  avg faithfulness=2.00  (n=2)
+multi_hop              avg correctness=0.25  avg faithfulness=0.25  (n=4)
+comparison_aggregation avg correctness=1.00  avg faithfulness=1.00  (n=2)
+temporal               avg correctness=2.00  avg faithfulness=2.00  (n=2)
+unanswerable           avg correctness=1.00  avg faithfulness=1.00  (n=2)
+----------------------------------------------------------------------------------------------------
+OVERALL  avg correctness=1.08/2  avg faithfulness=1.08/2  hallucination risks=0/2
+====================================================================================================

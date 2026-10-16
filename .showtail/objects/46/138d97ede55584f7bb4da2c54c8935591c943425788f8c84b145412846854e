@@ -1,0 +1,46 @@
+- import java.io.IOException;
+- import java.net.URI;
+- import java.net.http.HttpClient;
+- import java.net.http.HttpRequest;
+- import java.net.http.HttpResponse;
+- import java.util.LinkedHashMap;
+- import java.util.List;
+- import java.util.Map;
+- 
+- /**
+-  * Grades one answer against its gold reference using Jev (TypeSafe AI's
+-  * "System One" model) via its documented HTTP API -- no SDK dependency,
+-  * just java.net.http.HttpClient + the Jackson dependency already on the
+-  * classpath.
+-  *
+-  * Unlike {@link LlmJudgeScorer}, Jev never generates free text: correctness
+-  * and faithfulness are asked as typed "score" questions (a probability-weighted
+-  * value across named levels, e.g. 1.35 -- not rounded to a level index), and
+-  * appropriate-refusal is asked as a typed "noul" (yes/no) question. There's no
+-  * rationale in the response, so {@link ScoredAnswer#rationale()} is always "".
+-  */
++ import java.io.IOException;
++ import java.net.URI;
++ import java.net.http.HttpClient;
++ import java.net.http.HttpRequest;
++ import java.net.http.HttpResponse;
++ import java.util.Iterator;
++ import java.util.LinkedHashMap;
++ import java.util.List;
++ import java.util.Map;
++ 
++ /**
++  * Grades one answer against its gold reference using Jev (TypeSafe AI's
++  * "System One" model) via its documented HTTP API -- no SDK dependency,
++  * just java.net.http.HttpClient + the Jackson dependency already on the
++  * classpath.
++  *
++  * Unlike {@link LlmJudgeScorer}, Jev never generates free text: correctness
++  * and faithfulness are asked as typed "score" questions (a probability-weighted
++  * value across named levels, e.g. 1.35 -- not rounded to a level index), and
++  * appropriate-refusal is asked as a typed "noul" (yes/no) question. Jev itself
++  * has no rationale field, so {@link ScoredAnswer#rationale()} is synthesized
++  * from the response's own `legend`/`probabilities` -- the level Jev leaned
++  * towards, and how confident it was -- so a disagreement with the other judge
++  * is at least legible instead of just a bare number.
++  */

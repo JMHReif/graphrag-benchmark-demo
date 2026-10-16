@@ -1,0 +1,1 @@
+{"sequence":237,"type":"tool_use","sourceId":"conversation:toolu_01KeYKagoEiKbA7tM3fkigBh:use","timestamp":"2026-09-29T20:27:59.687Z","toolUseId":"toolu_01KeYKagoEiKbA7tM3fkigBh","toolName":"Read","input":{"file_path":"/Users/jenniferreif/Projects/graphrag-benchmark-demo/src/main/java/com/neo4j/webinar/bench/ScoredAnswer.java"}}

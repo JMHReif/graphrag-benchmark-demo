@@ -1,0 +1,1 @@
+{"sequence":206,"type":"tool_use","sourceId":"conversation:toolu_01QSDCfh9Rv49p6Tmg1EAkNF:use","timestamp":"2026-09-29T19:56:36.569Z","toolUseId":"toolu_01QSDCfh9Rv49p6Tmg1EAkNF","toolName":"WebSearch","input":{"query":"\"langchain4j-typesafe-ai\" ChatModel builder"}}

@@ -1,0 +1,1 @@
+You're building the GraphRAG demo for the webinar and just simplified two benchmark questions, then ran the benchmark to check them. Next: decide whether to bump maxSeedChunks or traversal depth to fix the two retrieval gaps just found. (disable recaps in /config)

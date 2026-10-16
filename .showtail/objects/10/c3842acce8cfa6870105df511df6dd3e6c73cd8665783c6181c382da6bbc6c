@@ -1,0 +1,29 @@
+WebFetch: https://github.com/dfa1/typesafe-java
+
+```
+# typesafe-java Repository Report
+
+**Description:** "Java 21 client for the TypeSafe API. Send a state (any JSON value) plus a set of Noul/Choice/Score questions, get back typed answers."
+
+**Star Count:** 0
+
+**Fork Count:** 1
+
+**Contributors:** Not displayed on page
+
+**Last Commit Date:** Not specified on page
+
+**Open Issues:** 1
+
+**Closed Issues:** Not displayed
+
+**Releases/Tags:** Not shown as published to Maven Central in the visible content, though Maven Central is referenced in installation instructions
+
+**License:** MIT
+
+**CI Badge:** Yes (GitHub Actions CI badge present)
+
+**Total Commits:** 121
+
+**Project Type:** Single-maintainer hobby project. The repository is owned by user `dfa1` with no organizational backing evident. The project lacks stars and has minimal engagement metrics, suggesting early-stage or niche usage.
+```

@@ -1,0 +1,15 @@
+Reverted and re-ran. With the plain top-4 vector search (no entity matching, no widen-then-filter), the numbers land close to before:
+
+| | Simple (k=4) |
+|---|---|
+| Overall correctness | 1.50/2 |
+| Q1, Q2, Q3, Q4, Q7, Q8, Q9, Q11, Q12 | 2/2 |
+| Q5 (kept talking point) | 0/2 — same known cause |
+| Q6 | 0/2 |
+| Q10 | 0/2 |
+
+Q7 and Q12 held at 2/2 — those gains came from the `OPTIONAL MATCH` regression fix and the 2-hop traversal, not the entity-matching code, so removing that didn't cost you anything there.
+
+Q6 is the one that moved: it now *does* retrieve all four bug chunks (C1 ranks 4th, so k=4 catches it), but the judge flagged the chat model's synthesis as getting some detail wrong across the four bugs — a model-answer-quality issue now, not a missing-context issue. That's a different, smaller problem than before, and arguably a fairer one to leave as-is rather than build more retrieval machinery around.
+
+Net: simpler code, one line changed in `Main.java` (`3` → `4`), and the benchmark is basically where it was — 1.50 vs. 1.58 — without the extra entity-matching logic. Codebase is back to a single, easy-to-explain retrieval story: vector search top-k, then up to two-hop graph expansion.

@@ -1,0 +1,1 @@
+{"sequence":119,"type":"assistant_text","sourceId":"conversation:a33bd0cb-9dfe-48de-a390-4b0535ab9d8f:text:0","timestamp":"2026-09-29T19:03:52.876Z","text":"Good instinct — before I design the widen-then-filter mechanism, let me check something the 2-hop change may have broken: chunks whose only mentioned entity has *no* further graph connections (like the Policy chunks)."}

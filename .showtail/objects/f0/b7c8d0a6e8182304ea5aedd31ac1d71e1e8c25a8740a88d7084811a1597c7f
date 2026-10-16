@@ -1,0 +1,17 @@
+Got this error while trying to run the seed step: "
+
+<pasted_content id="c0e5">
+java.lang.NullPointerException
+    at java.util.Objects.requireNonNull (Objects.java:220)
+    at java.util.ImmutableCollections$MapN.<init> (ImmutableCollections.java:1437)
+    at java.util.Map.of (Map.java:1485)
+    at com.neo4j.webinar.ingest.GraphSeeder.seedReleasesAndBugs (GraphSeeder.java:115)
+    at com.neo4j.webinar.ingest.GraphSeeder.seed (GraphSeeder.java:46)
+    at com.neo4j.webinar.Main.main (Main.java:54)
+    at org.codehaus.mojo.exec.ExecJavaMojo.doMain (ExecJavaMojo.java:358)
+    at org.codehaus.mojo.exec.ExecJavaMojo.doExec (ExecJavaMojo.java:347)
+    at org.codehaus.mojo.exec.ExecJavaMojo.lambda$execute$0 (ExecJavaMojo.java:269)
+    at java.lang.Thread.run (Thread.java:1474)
+</pasted_content id="c0e5">
+
+". Could you explain why we got this and fix it?

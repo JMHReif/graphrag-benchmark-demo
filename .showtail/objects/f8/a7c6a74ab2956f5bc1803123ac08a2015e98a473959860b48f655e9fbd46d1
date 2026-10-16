@@ -1,0 +1,7 @@
+No — there are two doc types embedded, not just release notes. Looking at `GraphSeeder.seedChunks()`, six chunks get embedded and stored as `:Chunk` nodes:
+
+- **Release notes** — C1 (Aurora 3.2), C2 (Aurora 3.1), C4 (Beacon 1.4)
+- **A known-issue note** — C3 (BUG-103, still open, not tied to any release)
+- **Policy documents** — C5 (Support SLA), C6 (Subscription Refund Policy)
+
+Each gets embedded via `embeddingModel.embed(chunk.text())` and linked via `MENTIONS` to whichever bugs/releases/features/policies it references (`GraphSeeder.java:182-228`). Customers and tickets are never embedded — no chunk text mentions them — which is the structural gap behind Q12's retrieval problem we found earlier.

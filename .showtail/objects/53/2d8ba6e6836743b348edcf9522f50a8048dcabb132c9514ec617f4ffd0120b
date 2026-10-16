@@ -1,0 +1,3 @@
+One quick flag before the checklist: that real `JEV_API_KEY` is now in this session's transcript (same as happened with the OpenAI key earlier) — worth rotating on the TypeSafe console after you're done testing, since it's been exposed outside the file itself.
+
+Let me verify Neo4j is still reachable (read-only check, not running the benchmark):

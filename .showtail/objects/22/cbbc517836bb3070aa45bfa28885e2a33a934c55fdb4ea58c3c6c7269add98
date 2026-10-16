@@ -1,0 +1,1 @@
+{"sequence":68,"type":"tool_use","sourceId":"conversation:toolu_018yKF6SmHiexff1MptGuqfH:use","timestamp":"2026-09-29T18:15:36.340Z","toolUseId":"toolu_018yKF6SmHiexff1MptGuqfH","toolName":"Read","input":{"file_path":"/Users/jenniferreif/Projects/graphrag-benchmark-demo/src/main/java/com/neo4j/webinar/bench/LlmJudgeScorer.java"}}

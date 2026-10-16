@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.neo4j.webinar</groupId>
+    <artifactId>graphrag-benchmark-demo</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <name>GraphRAG Benchmark Demo</name>
+    <description>
+        Companion demo for the "Benchmarking RAG for Accuracy" webinar.
+        Builds a small GraphRAG pipeline over a support-ticket knowledge graph
+        in Neo4j using LangChain4j, then scores it against a benchmark of
+        question types with an LLM-as-judge harness.
+    </description>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!--
+          Versions below were the latest available on Maven Central as of
+          September 2026. langchain4j-community-* modules are still shipping
+          as betas and move fast, so before your session, double check:
+            https://central.sonatype.com/artifact/dev.langchain4j/langchain4j-bom
+            https://central.sonatype.com/artifact/dev.langchain4j/langchain4j-community-neo4j
+            https://central.sonatype.com/artifact/dev.langchain4j/langchain4j-community-neo4j-retriever
+          and bump these properties if newer versions exist. A version
+          mismatch between langchain4j core and langchain4j-community is the
+          most common source of NoSuchMethodError at runtime.
+        -->
+        <langchain4j.version>1.12.2</langchain4j.version>
+        <langchain4j.community.version>1.20.0-beta30</langchain4j.community.version>
+        <neo4j.driver.version>5.28.4</neo4j.driver.version>
+        <jackson.version>2.18.2</jackson.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>dev.langchain4j</groupId>
+                <artifactId>langchain4j-bom</artifactId>
+                <version>${langchain4j.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <!-- Core LangChain4j: ChatModel / EmbeddingModel / AiServices / RAG abstractions -->
+        <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j</artifactId>
+        </dependency>
+
+        <!-- LLM + embedding provider used for the demo. Swap for another
+             langchain4j-<provider> module (azure-open-ai, ollama, bedrock, ...)
+             if you're not using OpenAI. -->
+        <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j-open-ai</artifactId>
+        </dependency>
+
+        <!-- Neo4j vector store (used for the vector-seed step of GraphRAG) -->
+        <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j-community-neo4j</artifactId>
+            <version>${langchain4j.community.version}</version>
+        </dependency>
+
+        <!-- Plain Neo4j Java Driver, used directly for graph seeding and
+             for the Cypher graph-expansion step of the GraphRAG retriever. -->
+        <dependency>
+            <groupId>org.neo4j.driver</groupId>
+            <artifactId>neo4j-java-driver</artifactId>
+            <version>${neo4j.driver.version}</version>
+        </dependency>
+
+        <!-- JSON parsing for the benchmark question set -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>graphrag-benchmark-demo</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.4.1</version>
+                <configuration>
+                    <mainClass>com.neo4j.webinar.Main</mainClass>
+                </configuration>
+            </plugin>
+            <!-- Shade plugin so `java -jar` works without a classpath dance
+                 during the live demo. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.6.0</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>com.neo4j.webinar.Main</mainClass>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

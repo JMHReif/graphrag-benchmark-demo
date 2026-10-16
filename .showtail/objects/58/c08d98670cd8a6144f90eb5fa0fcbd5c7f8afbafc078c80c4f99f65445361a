@@ -1,0 +1,1 @@
+Now `mvn compile exec:java -Dexec.args=vector` runs the vector-only baseline and writes `scorecard-vectoronly-*.csv`; plain `mvn compile exec:java` still runs GraphRAG. Delete the two identical CSVs and re-run both — this time you should see the multi-hop questions (Q3, Q4, Q5, Q9, Q12) actually diverge, since only GraphRAG's retriever does the graph expansion.

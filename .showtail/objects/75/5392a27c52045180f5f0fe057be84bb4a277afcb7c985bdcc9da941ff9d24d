@@ -1,0 +1,50 @@
+WebFetch: https://vercel.com/docs/ai-gateway
+
+```
+---
+title: "Vercel AI Gateway: Models, Routing, and Observability"
+product: vercel
+url: /docs/ai-gateway
+canonical_url: "https://vercel.com/docs/ai-gateway"
+last_updated: 2026-09-14
+type: integration
+prerequisites:
+  []
+related:
+  - /docs/ai-gateway/modalities
+  - /docs/ai-gateway/inputs-and-tools
+  - /docs/ai-gateway/sdks-and-apis/ai-sdk
+  - /docs/ai-gateway/sdks-and-apis/openai-chat-completions
+  - /docs/ai-gateway/sdks-and-apis/responses
+summary: Call AI models from any infrastructure through a managed gateway. Centralize credentials, request logs, spend budgets, routing, and provider failover.
+install_vercel_plugin: npx plugins add vercel/vercel-plugin
+---
+
+# Vercel AI Gateway: Models, Routing, and Observability
+
+## Call AI models across providers with Vercel AI Gateway
+
+Use one managed gateway from any infrastructure to centralize credentials, log requests, control spend, and fail over across providers.
+
+
+<!-- docsgraph:related -->
+## Related pages
+
+> **For AI agents:** Follow these links to understand how this page connects to the rest of the Vercel ecosystem. For the full cross-link map (inbound, outbound, prerequisites, and semantic neighbors), see the .graph.md link below.
+
+- [AI Gateway: Production-ready reliability for your AI apps](https://vercel.com/blog/ai-gateway-is-now-generally-available?from=related&source_path=%2Fdocs%2Fai-gateway&source_site=vercel-docs&relationship=related)
+- [AI Gateway](https://ai-sdk.dev/providers/ai-sdk-providers/ai-gateway?from=related&source_path=%2Fdocs%2Fai-gateway&source_site=vercel-docs&relationship=related)
+- [TanStack AI](https://chat-sdk.dev/docs/ai/tanstack-ai?from=related&source_path=%2Fdocs%2Fai-gateway&source_site=vercel-docs&relationship=related) — Feed thread history into TanStack AI's chat() and give it Chat SDK tools, with no runtime dependency on @tanstack/ai.
+- [Agent configuration (agent.ts)](https://eve.dev/docs/agent-config?from=related&source_path=%2Fdocs%2Fai-gateway&source_site=vercel-docs&relationship=related) — Configure an eve agent's model, reasoning effort, compaction, limits, and runtime behavior in agent.ts.
+- [Deployment](https://eve.dev/docs/guides/deployment/overview?from=related&source_path=%2Fdocs%2Fai-gateway&source_site=vercel-docs&relationship=related) — Choose a deployment strategy and prepare an eve agent for production.
+- [Deploy to Vercel](https://eve.dev/docs/guides/deployment/vercel?from=related&source_path=%2Fdocs%2Fai-gateway&source_site=vercel-docs&relationship=related) — Deploy an eve agent with Vercel Workflow, Sandbox, Cron, and project credentials.
+- [AI Gateway and one-click deploys now available on TRAE](https://vercel.com/changelog/ai-gateway-and-one-click-deploys-now-available-on-trae?from=related&source_path=%2Fdocs%2Fai-gateway&source_site=vercel-docs&relationship=related)
+- [AI Gateway is now in Beta](https://vercel.com/changelog/ai-gateway-is-now-in-beta?from=related&source_path=%2Fdocs%2Fai-gateway&source_site=vercel-docs&relationship=related)
+- [ Routing rules now available on AI Gateway](https://vercel.com/changelog/ai-gateway-routing-rules?from=related&source_path=%2Fdocs%2Fai-gateway&source_site=vercel-docs&relationship=related)
+- [Auto-recharge available in AI Gateway](https://vercel.com/changelog/auto-recharge-available-in-ai-gateway?from=related&source_path=%2Fdocs%2Fai-gateway&source_site=vercel-docs&relationship=related)
+- [Claude Opus 4.1 is now supported in Vercel AI Gateway](https://vercel.com/changelog/claude-4-1-opus-is-now-supported-in-vercel-ai-gateway?from=related&source_path=%2Fdocs%2Fai-gateway&source_site=vercel-docs&relationship=related)
+- [Durable agent approval workflows on Vercel](https://vercel.com/kb/guide/agent-approval-workflow-stack-guide?from=related&source_path=%2Fdocs%2Fai-gateway&source_site=vercel-docs&relationship=related) — How enterprise architects choose a stack and decide where to run durable, human-in-the-loop agent approval workflows on
+
+Full cross-link map for this page: [/docs/ai-ga
+… (truncated, 6220 more characters)
+```

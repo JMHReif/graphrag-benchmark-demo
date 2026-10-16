@@ -1,0 +1,39 @@
+$ neo4j-cli query "MATCH (c:Chunk {id:'C3'})-[:MENTIONS]->(entity) MATCH path = (entity)-[*1..2]-(other) WHERE NONE(n IN nodes(path)[1..] WHERE n:Chunk OR n = entity) RETURN [n IN nodes(path) | coalesce(n.id, n.name, n.version)] AS chain, other.tier AS tier" --env /Users/jenniferreif/Projects/graphrag-benchmark-demo/env.sh --format toon
+
+```
+A newer neo4j-cli is available: v1.10.0 (you have v1.8.0). Run `neo4j-cli update` to upgrade.
+arrays_truncated: 0
+columns[#2]: chain,tier
+rows[#15]:
+  - chain[#2]: Webhook Triggers,Aurora
+    tier: null
+  - chain[#3]: Webhook Triggers,Aurora,SSO Login
+    tier: null
+  - chain[#3]: Webhook Triggers,Aurora,Scheduled Workflows
+    tier: null
+  - chain[#3]: Webhook Triggers,Aurora,Aurora 3.0
+    tier: null
+  - chain[#3]: Webhook Triggers,Aurora,Aurora 3.1
+    tier: null
+  - chain[#3]: Webhook Triggers,Aurora,Aurora 3.2
+    tier: null
+  - chain[#3]: Webhook Triggers,Aurora,Acme Corp
+    tier: Enterprise
+  - chain[#3]: Webhook Triggers,Aurora,Globex
+    tier: Growth
+  - chain[#3]: Webhook Triggers,Aurora,Umbrella Labs
+    tier: Starter
+  - chain[#2]: Webhook Triggers,BUG-103
+    tier: null
+  - chain[#3]: Webhook Triggers,BUG-103,TCK-504
+    tier: null
+  - chain[#2]: BUG-103,Webhook Triggers
+    tier: null
+  - chain[#3]: BUG-103,Webhook Triggers,Aurora
+    tier: null
+  - chain[#2]: BUG-103,TCK-504
+    tier: null
+  - chain[#3]: BUG-103,TCK-504,Globex
+    tier: Growth
+truncated: false
+```

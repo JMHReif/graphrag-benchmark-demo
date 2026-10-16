@@ -1,0 +1,15 @@
+$ source /Users/jenniferreif/Projects/graphrag-benchmark-demo/env.sh && neo4j-cli query "CALL db.index.vector.queryNodes('chunkEmbeddings', 6, \$q) YIELD node, score RETURN node.id AS id, score ORDER BY score DESC" --param 'q:embed=Which reported bugs have been fixed, and which are still open?' --embed-provider openai --embed-model text-embedding-3-small --env /Users/jenniferreif/Projects/graphrag-benchmark-demo/env.sh --format toon
+
+```
+A newer neo4j-cli is available: v1.10.0 (you have v1.8.0). Run `neo4j-cli update` to upgrade.
+arrays_truncated: 0
+columns[#2]: id,score
+rows[#6]{id,score}:
+  C3,0.7034677863121033
+  C4,0.6910695433616638
+  C2,0.690461277961731
+  C1,0.6657825112342834
+  C5,0.5820337533950806
+  C6,0.5686847567558289
+truncated: false
+```

@@ -1,0 +1,1 @@
+Just ran the test. Jev scored several questions differently than the chat model. I'd really like some sort of output in the rationale to help us understand why. Could we print which correctness level or faithfulness level it chose? Or could we add a couple additional levels to each of the faithfulness and correctness metrics?

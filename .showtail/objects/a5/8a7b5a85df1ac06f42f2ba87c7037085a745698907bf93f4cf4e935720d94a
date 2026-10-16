@@ -1,0 +1,33 @@
+Ok, now this error on the sanity check and full benchmark step: 
+
+<pasted_content id="c0e5">
+dev.langchain4j.exception.InvalidRequestException: {
+  "error": {
+    "message": "This model's maximum context length is 128000 tokens. However, your messages resulted in 134171 tokens. Please reduce the length of the messages.",
+    "type": "invalid_request_error",
+    "param": "messages",
+    "code": "context_length_exceeded"
+  }
+}
+    at dev.langchain4j.internal.ExceptionMapper$DefaultExceptionMapper.mapHttpStatusCode (ExceptionMapper.java:71)
+    at dev.langchain4j.internal.ExceptionMapper$DefaultExceptionMapper.mapException (ExceptionMapper.java:44)
+    at dev.langchain4j.internal.ExceptionMapper.withExceptionMapper (ExceptionMapper.java:31)
+    at dev.langchain4j.internal.RetryUtils.lambda$withRetryMappingExceptions$1 (RetryUtils.java:326)
+    at dev.langchain4j.internal.RetryUtils$RetryPolicy.withRetry (RetryUtils.java:204)
+    at dev.langchain4j.internal.RetryUtils.withRetry (RetryUtils.java:263)
+    at dev.langchain4j.internal.RetryUtils.withRetryMappingExceptions (RetryUtils.java:326)
+    at dev.langchain4j.internal.RetryUtils.withRetryMappingExceptions (RetryUtils.java:309)
+    at dev.langchain4j.model.openai.OpenAiChatModel.doChat (OpenAiChatModel.java:153)
+    at dev.langchain4j.model.chat.ChatModel.chat (ChatModel.java:46)
+    at dev.langchain4j.guardrail.SynchronousChatExecutor.execute (SynchronousChatExecutor.java:32)
+    at dev.langchain4j.guardrail.AbstractChatExecutor.executeInternal (AbstractChatExecutor.java:66)
+    at dev.langchain4j.guardrail.AbstractChatExecutor.execute (AbstractChatExecutor.java:52)
+    at dev.langchain4j.service.DefaultAiServices$1.invoke (DefaultAiServices.java:306)
+    at dev.langchain4j.service.DefaultAiServices$1.invoke (DefaultAiServices.java:154)
+    at jdk.proxy3.$Proxy28.answer (Unknown Source)
+    at com.neo4j.webinar.Main.main (Main.java:69)
+    at org.codehaus.mojo.exec.ExecJavaMojo.doMain (ExecJavaMojo.java:358)
+    at org.codehaus.mojo.exec.ExecJavaMojo.doExec (ExecJavaMojo.java:347)
+    at org.codehaus.mojo.exec.ExecJavaMojo.lambda$execute$0 (ExecJavaMojo.java:269)
+    at java.lang.Thread.run (Thread.java:1474)
+</pasted_content id="c0e5">

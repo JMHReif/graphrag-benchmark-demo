@@ -1,0 +1,1 @@
+Updated `benchmark_questions.json`. Since both are meaningfully different questions now (not just wording tweaks), the score history for Q6/Q12 won't be comparable to prior runs — worth a fresh baseline run of both pipelines rather than diffing against the old CSVs. Want me to run the benchmark now to sanity-check the new questions score sensibly?

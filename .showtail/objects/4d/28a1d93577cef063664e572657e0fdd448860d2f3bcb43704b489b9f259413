@@ -1,0 +1,1 @@
+We've been debugging and tuning the GraphRAG benchmark demo's retrieval and scoring; latest change simplified the graph traversal query. Next: you'll run the benchmark yourself to check results.

@@ -1,0 +1,33 @@
+-         try (Session session = driver.session()) {
+-             List<Record> candidates = session.run("""
+-                     CALL db.index.vector.queryNodes($indexName, $k, $queryVector)
+-                     YIELD node, score
+-                     RETURN node.id AS id, node.text AS text, score
+-                     """, Map.of(
+-                     "indexName", VECTOR_INDEX,
+-                     "k", maxSeedChunks + 2,
+-                     "queryVector", queryEmbedding.vectorAsList()
+-             )).list();
+- 
+-             // No named entity to filter by -> keep the full (wider) candidate pool, since we have
+-             // no signal for trimming it. A named entity found -> narrow to what's actually relevant
+-             // to it, even if that narrows below maxSeedChunks.
+-             Set<String> namedEntityIds = findEntitiesNamedInQuestion(session, query.text());
+-             List<Record> filtered = namedEntityIds.isEmpty()
+-                     ? candidates
+-                     : candidates.stream().filter(c -> isNearNamedEntity(session, c.get("id").asString(), namedEntityIds)).toList();
+-             List<Record> seeds = filtered.isEmpty() ? candidates : filtered;
+- 
+-             for (Record seed : seeds) {
++         try (Session session = driver.session()) {
++             List<Record> seeds = session.run("""
++                     CALL db.index.vector.queryNodes($indexName, $k, $queryVector)
++                     YIELD node, score
++                     RETURN node.id AS id, node.text AS text, score
++                     """, Map.of(
++                     "indexName", VECTOR_INDEX,
++                     "k", maxSeedChunks,
++                     "queryVector", queryEmbedding.vectorAsList()
++             )).list();
++ 
++             for (Record seed : seeds) {

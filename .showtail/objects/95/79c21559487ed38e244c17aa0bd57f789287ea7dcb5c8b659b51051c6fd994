@@ -1,0 +1,1 @@
+{"sequence":236,"type":"user_text","sourceId":"conversation:477d0749-4168-4d86-a13b-7601b19da49f","timestamp":"2026-09-29T20:27:38.930Z","text":"Hm...for the missing rationale field, just leave blank. As long as the scores are returned, that feels sufficient. For the Score-to-int mapping, how complicated would it be to return the true average (e.g. 1.35)?"}

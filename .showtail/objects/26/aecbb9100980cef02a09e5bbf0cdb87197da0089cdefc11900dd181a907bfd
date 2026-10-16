@@ -1,0 +1,3 @@
+Good question, but the honest answer is: no, not meaningfully. Looking at the actual answers from your runs, they're typically a paragraph or a short bulleted list — maybe 300–600 characters each. Across 12 questions, un-truncating adds roughly 2–5 KB to a report file that's already got the full question text, judge rationale, and stats sections in it. That's nothing for a local text file — worth doing.
+
+I'll keep the 160-char truncation for the *console* printout (so a live demo run doesn't scroll forever), but the `.txt` file gets the full, untruncated answer.

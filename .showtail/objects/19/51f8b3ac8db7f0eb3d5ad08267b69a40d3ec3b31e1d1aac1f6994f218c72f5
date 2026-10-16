@@ -1,0 +1,1 @@
+We've been improving the GraphRAG benchmark demo's retrieval and scoring accuracy, and just scoped adding Jev as a second judge model with fractional scores. Next: confirm whether to actually build that Jev integration now.

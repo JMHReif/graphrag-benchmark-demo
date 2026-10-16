@@ -1,0 +1,1 @@
+Sounds good — go ahead and start Docker/Neo4j on your end. Once it's up (and you've sourced `env.sh`), you're clear to run `mvn compile exec:java -Dexec.args=jev`. Let me know how it goes, especially if the live Jev response doesn't match what I built against.

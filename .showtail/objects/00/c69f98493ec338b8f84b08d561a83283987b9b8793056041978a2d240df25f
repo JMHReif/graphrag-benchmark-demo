@@ -1,0 +1,7 @@
+The simplified questions ran, but the new phrasing exposed a **retrieval recall limit** rather than the join/relevance issues from before — worth flagging since it changes what these questions demonstrate.
+
+**Q6** scored 0/2 ("missing key facts about BUG-101"). I checked the vector search directly: for this question, the top-3 seed chunks by similarity are **C3, C4, C2** — C1 (BUG-101's release note) ranks 4th and never gets retrieved. `maxSeedChunks` is set to 3, but the question needs facts from all 4 bug-related chunks, so one is always dropped no matter which pipeline you use.
+
+**Q12** scored 1/2, but for an interesting reason: the top-3 vector seeds are **C2, C1, C4** (missing C3, the Webhook Triggers/BUG-103 chunk) — yet the answer *did* correctly list "Webhook Triggers" as one of Aurora's features. That's the graph expansion working as intended: from the SSO Login seed entity, the 2-hop traversal reaches `Aurora → Webhook Triggers` and names it. It just can't reach BUG-103's *status*, since that's a 3rd hop away (`Webhook Triggers → BUG-103`), past the current 2-hop limit — so the feature shows up but its bug status doesn't.
+
+Both are legitimate, explainable retriever-tuning findings, not judge or graph-logic bugs. Two independent knobs would address them: bump `maxSeedChunks` above 3 (fixes Q6, more directly), or extend the traversal depth to 3 hops for Feature-anchored entities (fixes Q12's missing status). Want me to try either, or leave it as-is as a talking point about how retriever `k` and hop-depth are separate tuning levers?

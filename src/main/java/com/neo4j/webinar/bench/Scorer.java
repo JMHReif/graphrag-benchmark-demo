@@ -1,0 +1,11 @@
+package com.neo4j.webinar.bench;
+
+/**
+ * Grades one answer against its gold reference. Implemented by
+ * {@link LlmJudgeScorer} (the default, prompt-and-parse-JSON judge) and
+ * {@link TypeSafeJudgeScorer} (the opt-in Jev judge) so {@link BenchmarkRunner}
+ * doesn't care which is in use.
+ */
+public interface Scorer {
+    ScoredAnswer score(BenchmarkQuestion question, String actualAnswer);
+}

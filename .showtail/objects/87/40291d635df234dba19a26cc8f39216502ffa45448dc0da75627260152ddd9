@@ -1,0 +1,1 @@
+Ok, the GraphRAG and Vector RAG are getting the same scores. You can review the two CSV files from recent tests. First one is GraphRAG, later one is Vector RAG. Something isn't right either in the scoring or the retrieval.

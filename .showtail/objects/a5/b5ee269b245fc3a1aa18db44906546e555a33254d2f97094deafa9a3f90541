@@ -1,0 +1,1 @@
+{"sequence":10,"type":"tool_result","sourceId":"conversation:toolu_01E8AgE6FaDBXHAkjvdVe9TV:result","timestamp":"2026-09-29T16:12:50.889Z","toolUseId":"toolu_01E8AgE6FaDBXHAkjvdVe9TV","content":{"stdout":"---no gitignore---","stderr":"","interrupted":false,"isImage":false,"noOutputExpected":false},"isError":false,"stdout":"---no gitignore---","stderr":""}

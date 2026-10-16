@@ -1,0 +1,3 @@
+Compiles clean. Understood — I won't run the benchmark; that's yours to trigger.
+
+To sanity-check the query itself without running the app, I verified directly against Neo4j that `ALL(rel IN rels WHERE type(rel) <> 'MENTIONS')` still produces the same BUG-101 → Ticket → Customer chains as before, and that the Policy-only chunk still gets its own `path IS NULL` fallback row.

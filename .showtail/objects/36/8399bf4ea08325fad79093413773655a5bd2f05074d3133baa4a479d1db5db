@@ -1,0 +1,1 @@
+Compiles clean (those warnings are unrelated JVM/Maven noise). Let's verify the traversal logic directly against the graph before spending an API call.

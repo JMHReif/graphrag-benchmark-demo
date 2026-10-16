@@ -1,0 +1,1 @@
+We're building a Jev-based benchmark judge for the GraphRAG demo, now testing it against the OpenAI judge's scores. I just added rationale output so you can see why Jev's scores differ; re-run the jev benchmark to check it.

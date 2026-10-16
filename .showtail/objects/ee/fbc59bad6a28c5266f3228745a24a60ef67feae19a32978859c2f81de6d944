@@ -1,0 +1,5 @@
+Skill (skill: neo4j-cli, args: query "MATCH (n) RETURN labels(n)[0] AS label, count(*) AS count ORDER BY count DESC" --env /Users/jenniferreif/Projects/graphrag-benchmark-demo/env.sh)
+
+```
+Launching skill: neo4j-cli
+```

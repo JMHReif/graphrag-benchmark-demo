@@ -1,0 +1,9 @@
+-         boolean vectorOnly = args.length > 0 && args[0].equalsIgnoreCase("vector");
+-         ContentRetriever retriever = vectorOnly
+-                 ? new VectorOnlyContentRetriever(driver, embeddingModel, 3)
+-                 : new GraphRagContentRetriever(driver, embeddingModel, 3);
++         boolean vectorOnly = args.length > 0 && args[0].equalsIgnoreCase("vector");
++         int maxSeedChunks = 4;
++         ContentRetriever retriever = vectorOnly
++                 ? new VectorOnlyContentRetriever(driver, embeddingModel, maxSeedChunks)
++                 : new GraphRagContentRetriever(driver, embeddingModel, maxSeedChunks);

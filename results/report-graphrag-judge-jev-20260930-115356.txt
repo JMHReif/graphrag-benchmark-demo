@@ -1,0 +1,61 @@
+
+====================================================================================================
+BENCHMARK RESULTS
+====================================================================================================
+[Q1] simple_factual         correctness=1.98/2  faithfulness=0.72/2  
+      Q: Which release fixed the SAML SSO login timeout bug?
+      A: The SAML SSO login timeout bug was fixed in Release Aurora 3.2, which was released on July 1, 2026. This fix addresses BUG-101, where SAML-based SSO logins would time out after 30 seconds.
+      judge: correctness: 1.98 (leaning "fully correct and consistent with the gold reference", 98%) | faithfulness: 0.72 (leaning "mostly grounded, minor unsupported additions", 67%)
+[Q2] simple_factual         correctness=1.99/2  faithfulness=1.12/2  
+      Q: What is BUG-103 about, and is it fixed?
+      A: BUG-103 is about webhook retries duplicating events when a downstream endpoint responds slowly. The status of this bug is open, and there is no fix scheduled yet.
+      judge: correctness: 1.99 (leaning "fully correct and consistent with the gold reference", 99%) | faithfulness: 1.12 (leaning "mostly grounded, minor unsupported additions", 51%)
+[Q3] multi_hop              correctness=1.26/2  faithfulness=1.01/2  
+      Q: Which customers were affected by the SSO login timeout bug?
+      A: The customers affected by the SSO login timeout bug (BUG-101) were Acme Corp (tier: Enterprise) and Globex (tier: Growth).
+      judge: correctness: 1.26 (leaning "partially correct", 72%) | faithfulness: 1.01 (leaning "mostly grounded, minor unsupported additions", 87%)
+[Q4] multi_hop              correctness=1.99/2  faithfulness=0.91/2  
+      Q: Umbrella Labs filed a ticket about a bug -- has that bug been fixed, and if so, in which release?
+      A: Yes, the bug reported by Umbrella Labs has been fixed. It was fixed in the release Aurora 3.1, which was released on May 15, 2026. The bug ID is BUG-102, and it pertains to scheduled workflows skipping a run during daylight-saving transitions. The related ticket is TCK-503, which is closed.
+      judge: correctness: 1.99 (leaning "fully correct and consistent with the gold reference", 99%) | faithfulness: 0.91 (leaning "mostly grounded, minor unsupported additions", 87%)
+[Q5] multi_hop              correctness=0.01/2  faithfulness=0.04/2  
+      Q: Which open bugs affect customers on the Enterprise tier?
+      A: The open bug affecting customers on the Enterprise tier is:  - **Bug BUG-103**: "Webhook retries can duplicate events on slow endpoints." Status: open, no fix scheduled yet. This bug affects the feature Webhook Triggers, which is part of the Aurora product.   Customer Acme Corp, which is on the Enterprise tier, is subscribed to the Aurora product.
+      judge: correctness: 0.01 (leaning "wrong or missing the key facts", 99%) | faithfulness: 0.04 (leaning "states facts not supported by any real context", 98%)
+[Q6] comparison_aggregation correctness=1.99/2  faithfulness=0.84/2  
+      Q: Which reported bugs have been fixed, and which are still open?
+      A: **Fixed Bugs:** 1. **BUG-101**: SAML SSO logins time out after 30 seconds. Status: fixed in Release Aurora 3.2 (July 1, 2026). 2. **BUG-102**: Scheduled workflows skip a run across DST transitions. Status: fixed in Release Aurora 3.1 (May 15, 2026). 3. **BUG-104**: Usage dashboard totals undercount deleted users. Status: fixed in Release Beacon 1.4 (June 10, 2026).  **Open Bugs:** 1. **BUG-103**: Webhook retries duplicate events on slow endpoints. Status: open, no fix scheduled yet (Ticket TCK-504, filed by Customer Globex).
+      judge: correctness: 1.99 (leaning "fully correct and consistent with the gold reference", 99%) | faithfulness: 0.84 (leaning "mostly grounded, minor unsupported additions", 77%)
+[Q7] comparison_aggregation correctness=1.97/2  faithfulness=1.03/2  
+      Q: Compare the support SLA response time for Enterprise vs. Starter tier customers.
+      A: Enterprise customers receive a 4-hour first response time, while Starter customers receive a 2 business day first response time. This SLA applies to all software products.
+      judge: correctness: 1.97 (leaning "fully correct and consistent with the gold reference", 97%) | faithfulness: 1.03 (leaning "mostly grounded, minor unsupported additions", 92%)
+[Q8] temporal               correctness=1.95/2  faithfulness=0.60/2  
+      Q: What changed between Aurora 3.1 and Aurora 3.2?
+      A: Between Aurora 3.1 and Aurora 3.2, the following changes occurred:  - Aurora 3.1 (released on May 15, 2026) fixed BUG-102, which addressed an issue where scheduled workflows would silently skip a run during daylight-saving transitions. - Aurora 3.2 (released on July 1, 2026) fixed BUG-101, a critical issue where SAML-based SSO logins would time out after 30 seconds, preventing login failures during SAML redirects.  No other changes or features were mentioned in the provided context.
+      judge: correctness: 1.95 (leaning "fully correct and consistent with the gold reference", 95%) | faithfulness: 0.60 (leaning "states facts not supported by any real context", 52%)
+[Q9] temporal               correctness=1.94/2  faithfulness=0.74/2  
+      Q: Was the webhook duplication bug fixed before or after Aurora 3.2 shipped?
+      A: The webhook duplication bug (BUG-103) is still open and has no fix scheduled yet, as stated in the information from C3. Therefore, it was not fixed before or after Aurora 3.2 shipped, which was released on July 1, 2026.
+      judge: correctness: 1.94 (leaning "fully correct and consistent with the gold reference", 95%) | faithfulness: 0.74 (leaning "mostly grounded, minor unsupported additions", 52%)
+[Q10] unanswerable           correctness=1.08/2  faithfulness=1.97/2  
+      Q: What's the refund policy on hardware purchases?
+      A: I don't have that information in the knowledge base.
+      judge: correctness: 1.08 (leaning "partially correct", 58%) | faithfulness: 1.97 (leaning "fully grounded", 98%)
+[Q11] unanswerable           correctness=1.86/2  faithfulness=1.99/2  
+      Q: Who is Aurora's current VP of Engineering?
+      A: I don't have that information in the knowledge base.
+      judge: correctness: 1.86 (leaning "fully correct and consistent with the gold reference", 87%) | faithfulness: 1.99 (leaning "fully grounded", 100%)
+[Q12] multi_hop              correctness=1.99/2  faithfulness=0.68/2  
+      Q: What features does Aurora have, and which of them have had reported bugs?
+      A: Aurora has the following features: 1. Scheduled Workflows 2. SSO Login 3. Webhook Triggers  Reported bugs related to these features include:  - **Scheduled Workflows**:    - Bug ID: **BUG-102** ("Scheduled workflows skip a run across DST transitions") - severity: medium, status: fixed. This bug was fixed in Release Aurora 3.1 (released May 15, 2026).  - **SSO Login**:    - Bug ID: **BUG-101** ("SAML SSO logins time out after 30 seconds") - severity: high, status: fixed. This bug was fixed in Release Aurora 3.2 (released July 1, 2026).  - **Webhook Triggers**:    - Bug ID: **BUG-103** ("Webhook retries duplicate events on slow endpoints") - severity: high, status: open. This bug is currently unresolved.
+      judge: correctness: 1.99 (leaning "fully correct and consistent with the gold reference", 100%) | faithfulness: 0.68 (leaning "mostly grounded, minor unsupported additions", 46%)
+----------------------------------------------------------------------------------------------------
+simple_factual         avg correctness=1.98  avg faithfulness=0.92  (n=2)
+multi_hop              avg correctness=1.31  avg faithfulness=0.66  (n=4)
+comparison_aggregation avg correctness=1.98  avg faithfulness=0.93  (n=2)
+temporal               avg correctness=1.94  avg faithfulness=0.67  (n=2)
+unanswerable           avg correctness=1.47  avg faithfulness=1.98  (n=2)
+----------------------------------------------------------------------------------------------------
+OVERALL  avg correctness=1.67/2  avg faithfulness=0.97/2  hallucination risks=0/2
+====================================================================================================

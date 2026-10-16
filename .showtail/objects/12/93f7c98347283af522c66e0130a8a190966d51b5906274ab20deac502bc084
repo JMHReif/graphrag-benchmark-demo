@@ -1,0 +1,9 @@
+Ok, there is a dependency available for Jev: 
+
+<pasted_content id="c0e5">
+<dependency>
+    <groupId>dev.langchain4j</groupId>
+    <artifactId>langchain4j-typesafe-ai</artifactId>
+    <version>1.10.0</version>
+</dependency>
+</pasted_content id="c0e5">

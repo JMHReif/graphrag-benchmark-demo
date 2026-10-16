@@ -1,0 +1,8 @@
+-     }
+- 
+-     private static String nullValue() {
+-         return null;
+-     }
+- }
++     }
++ }

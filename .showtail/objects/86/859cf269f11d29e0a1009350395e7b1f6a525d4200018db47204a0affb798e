@@ -1,0 +1,21 @@
+Now that I have the real API shape, this maps onto our rubric nicely — and confirms skipping both community SDKs was the right call, since `java.net.http.HttpClient` (built into the JDK) plus the Jackson dependency already in `pom.xml` is genuinely all you'd need.
+
+**1. Config (`Config.java`)** — three new env vars, only required when this judge is selected: `JEV_API_KEY`, `JEV_BASE_URL` (default `https://api.typesafe.ai`), `JEV_MODEL` (default `jev-latest`).
+
+**2. Extract a `Scorer` interface.** Right now `BenchmarkRunner`'s constructor is hard-typed to the concrete `LlmJudgeScorer` (`BenchmarkRunner.java:28`). To plug in a second judge, pull out `interface Scorer { ScoredAnswer score(BenchmarkQuestion q, String actualAnswer); }`, have `LlmJudgeScorer implements Scorer`, and change `BenchmarkRunner`'s constructor to accept `Scorer` — same shape as the `ContentRetriever` swap we already did for GraphRAG vs. vector-only.
+
+**3. New `TypeSafeJudgeScorer implements Scorer`.** One `POST /v1/systemone` call per question, mapping our rubric onto Jev's typed questions instead of a free-text prompt:
+- `state`: a small JSON object — `{question, category, unanswerable, goldAnswer, actualAnswer}` — replacing today's hand-templated prompt string entirely.
+- `questions.correctness`: a `score` question, 3 levels — `["wrong or missing the key facts", "partially correct", "fully correct and consistent with the gold reference"]`.
+- `questions.faithfulness`: a `score` question, 3 levels mirroring the current faithfulness rubric.
+- `questions.refusal`: a `noul` (yes/no) question, e.g. "Did the system plainly decline rather than fabricate an answer?"
+- Parse the response, map `score`/`noul` values back into `ScoredAnswer`'s ints/boolean, with manual 429/529 exponential backoff (the docs note SDKs handle this automatically — since we're skipping the SDK, that retry loop is ours to write, though it's small).
+
+**4. `Main.java` wiring** — extend the existing arg-based selection pattern (it already picks `seed`/`vector`/default) to also pick the judge, defaulting to the current OpenAI judge and adding an opt-in for Jev, since the ask was an *additional* run, not a replacement. Report/CSV filenames get the judge name baked in, same as we discussed for the naming scheme.
+
+**Two real design decisions this surfaces, not just plumbing** — worth you weighing in on before this gets built:
+
+- **No rationale field.** Jev returns typed probabilities/confidence, never free text — there's no equivalent to today's one-sentence `judge:` explanation in the report file you asked for last time. Options: leave it blank for Jev-judged rows, or synthesize a pseudo-rationale from the returned `probabilities`/`confidence`/`legend` (e.g. "correctness: 78% fully-correct vs. 15% partially-correct") — arguably more informative than a sentence, but different in kind.
+- **Score-to-int mapping.** Jev's `score` field is a *probability-weighted average* across levels (e.g. `1.35`), not a clean 0/1/2. Round the weighted value, or take the single highest-probability level from `probabilities` instead? Rounding a weighted average can overstate confidence near the boundary; the argmax is more honest but throws away the "how split was it" signal.
+
+Let me know how you'd want those two handled, and whether you want this actually built now or still just scoped.

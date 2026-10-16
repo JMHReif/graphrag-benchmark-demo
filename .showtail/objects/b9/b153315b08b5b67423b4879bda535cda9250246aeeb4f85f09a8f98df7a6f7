@@ -1,0 +1,12 @@
+WebFetch: https://search.maven.org/solrsearch/select?q=typesafe-sdk-java&rows=20&wt=json
+
+```
+# Search Results Report
+
+No entries found. The JSON response shows:
+
+- **numFound**: 0
+- **docs**: Empty array
+
+The search for "typesafe-sdk-java" returned no results from the Maven Central Repository. There are no groupId/artifactId/version entries to report for TypeSafe AI, Jev, dfa1, or Premo-Cloud in this response.
+```

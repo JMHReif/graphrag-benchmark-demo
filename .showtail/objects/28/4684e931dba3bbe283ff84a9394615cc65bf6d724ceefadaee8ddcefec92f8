@@ -1,0 +1,21 @@
+-         boolean vectorOnly = args.length > 0 && args[0].equalsIgnoreCase("vector");
+-         int maxSeedChunks = 4;
+-         ContentRetriever retriever = vectorOnly
+-                 ? new VectorOnlyContentRetriever(driver, embeddingModel, maxSeedChunks)
+-                 : new GraphRagContentRetriever(driver, embeddingModel, maxSeedChunks);
+-         String runLabel = vectorOnly ? "vectoronly" : "graphrag";
++         boolean vectorOnly = args.length > 0 && args[0].equalsIgnoreCase("vector");
++         boolean jevJudge = args.length > 0 && args[0].equalsIgnoreCase("jev");
++         int maxSeedChunks = 4;
++         ContentRetriever retriever = vectorOnly
++                 ? new VectorOnlyContentRetriever(driver, embeddingModel, maxSeedChunks)
++                 : new GraphRagContentRetriever(driver, embeddingModel, maxSeedChunks);
++         String runLabel = (vectorOnly ? "vectoronly" : "graphrag") + (jevJudge ? "-judge-jev" : "");
++ 
++         Scorer scorer;
++         if (jevJudge) {
++             Config.requireJevKey();
++             scorer = new TypeSafeJudgeScorer(Config.JEV_API_KEY, Config.JEV_BASE_URL, Config.JEV_MODEL);
++         } else {
++             scorer = new LlmJudgeScorer(chatModel);
++         }

@@ -1,0 +1,55 @@
+- import java.util.ArrayList;
+- import java.util.HashSet;
+- import java.util.LinkedHashMap;
+- import java.util.LinkedHashSet;
+- import java.util.List;
+- import java.util.Map;
+- import java.util.Set;
+- 
+- /**
+-  * The GraphRAG retriever: this is the piece that turns plain vector RAG into
+-  * *graph* RAG.
+-  *
+-  * <pre>
+-  *   1. Embed the question.
+-  *   2. Vector search over :Chunk.embedding for a candidate pool slightly
+-  *      wider than what we'll actually use -- this is exactly what a
+-  *      vector-only pipeline would stop at.
+-  *   3. If the question names something that's actually in the graph (a
+-  *      product, feature, release, bug, customer, or policy), use the graph
+-  *      to drop candidates that aren't within two hops of it -- e.g. a
+-  *      question naming "Aurora" shouldn't pull in a Beacon release note
+-  *      just because it scored well on vector similarity. If nothing in the
+-  *      question matches a graph entity, keep the vector ranking as-is.
+-  *   4. For each surviving seed chunk, walk up to two hops out through the
+-  *      graph (Chunk -[:MENTIONS]-> entity -[any]- ...) to pull in connected
+-  *      facts a text chunk alone can't express: which release fixed a bug,
+-  *      which customers reported it (Bug -> Ticket -> Customer is two hops),
+-  *      whether it's still open, etc.
+-  *   5. Return chunk text + graph facts together as retrieved Content.
+-  * </pre>
+-  */
++ import java.util.ArrayList;
++ import java.util.LinkedHashMap;
++ import java.util.LinkedHashSet;
++ import java.util.List;
++ import java.util.Map;
++ import java.util.Set;
++ 
++ /**
++  * The GraphRAG retriever: this is the piece that turns plain vector RAG into
++  * *graph* RAG.
++  *
++  * <pre>
++  *   1. Embed the question.
++  *   2. Vector search over :Chunk.embedding to find the most relevant
++  *      free-text passages ("seed" nodes) -- this is exactly what a
++  *      vector-only pipeline would stop at.
++  *   3. For each seed chunk, walk up to two hops out through the graph
++  *      (Chunk -[:MENTIONS]-> entity -[any]- ...) to pull in connected
++  *      facts a text chunk alone can't express: which release fixed a bug,
++  *      which customers reported it (Bug -> Ticket -> Customer is two hops),
++  *      whether it's still open, etc.
++  *   4. Return chunk text + graph facts together as retrieved Content.
++  * </pre>
++  */

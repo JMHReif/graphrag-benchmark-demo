@@ -1,0 +1,1 @@
+We've been tuning the GraphRAG demo's retriever ahead of your webinar; the benchmark now runs cleanly at k=4 with GraphRAG scoring 1.50/2 overall. Next: decide if you want to dig into the remaining Q6 answer-quality issue or move on.

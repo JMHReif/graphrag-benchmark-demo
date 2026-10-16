@@ -1,0 +1,3 @@
+**Fix:** excludes `Chunk` nodes from the one-hop neighbor expansion, so the traversal only surfaces real domain facts (bugs, releases, tickets, customers, policies) — not other `:Chunk` nodes carrying their raw embedding vectors. Graph facts stay small and bounded, as they were meant to be with `LIMIT 25`.
+
+Re-run `mvn compile exec:java` (no need to re-seed — the graph data itself was fine, per the node counts above) and it should now stay well under the context limit.

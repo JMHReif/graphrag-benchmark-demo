@@ -1,0 +1,7 @@
+$ source env.sh && cat > /tmp/Q6Test.java << 'EOF'
+EOF
+echo "skip"
+
+```
+skip
+```

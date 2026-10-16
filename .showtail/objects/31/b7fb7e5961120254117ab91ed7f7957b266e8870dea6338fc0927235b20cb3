@@ -1,0 +1,13 @@
+-             Set<String> namedEntityIds = findEntitiesNamedInQuestion(session, query.text());
+-             List<Record> filtered = namedEntityIds.isEmpty()
+-                     ? candidates
+-                     : candidates.stream().filter(c -> isNearNamedEntity(session, c.get("id").asString(), namedEntityIds)).toList();
+-             List<Record> seeds = (filtered.isEmpty() ? candidates : filtered).stream().limit(maxSeedChunks).toList();
++             // No named entity to filter by -> keep the full (wider) candidate pool, since we have
++             // no signal for trimming it. A named entity found -> narrow to what's actually relevant
++             // to it, even if that narrows below maxSeedChunks.
++             Set<String> namedEntityIds = findEntitiesNamedInQuestion(session, query.text());
++             List<Record> filtered = namedEntityIds.isEmpty()
++                     ? candidates
++                     : candidates.stream().filter(c -> isNearNamedEntity(session, c.get("id").asString(), namedEntityIds)).toList();
++             List<Record> seeds = filtered.isEmpty() ? candidates : filtered;

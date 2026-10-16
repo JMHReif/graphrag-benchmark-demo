@@ -1,0 +1,4 @@
+-                 json.path("correctness").asInt(0),
+-                 json.path("faithfulness").asInt(0),
++                 json.path("correctness").asDouble(0),
++                 json.path("faithfulness").asDouble(0),

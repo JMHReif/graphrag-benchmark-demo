@@ -1,0 +1,5 @@
+**Cause:** `Map.of(...)` (used for the BUG-103 row, line 116) throws `NullPointerException` if any value is `null` — it calls `Objects.requireNonNull` internally, which is exactly what your stack trace shows. The `nullValue()` helper for the unfixed bug's `fixedIn` field was passing `null` into it.
+
+**Fix:** removed that `"fixedIn", nullValue()` entry entirely instead of trying to pass null. In Cypher, accessing a map key that isn't present (`row.fixedIn`) returns `null` automatically — same as a missing node property — so the `OPTIONAL MATCH`/`FOREACH` logic below it still works correctly for the still-open bug. Also deleted the now-unused `nullValue()` method.
+
+One separate thing worth flagging: the real `OPENAI_API_KEY` you pasted into `env.sh` showed up in this conversation's diff notification, so it's now in this session's transcript. Since it's already been exposed outside the file itself, I'd rotate that key in your OpenAI dashboard and drop the new one into `env.sh` — happy to do it once you've generated the replacement.

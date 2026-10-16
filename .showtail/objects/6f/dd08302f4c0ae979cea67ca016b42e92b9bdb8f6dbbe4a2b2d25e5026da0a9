@@ -1,0 +1,1 @@
+I feel like we should retrieve a couple more chunks in the vector search, but then the graph should filter some of those out. Is there a clean, simple way to do that?

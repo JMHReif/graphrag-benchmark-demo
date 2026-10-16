@@ -1,0 +1,6 @@
+$ find /Users/jenniferreif/Projects/graphrag-benchmark-demo -iname "*.csv" -exec ls -la {} \;
+
+```
+-rw-r--r--  1 jenniferreif  staff  1151 Sep 29 12:51 /Users/jenniferreif/Projects/graphrag-benchmark-demo/results/scorecard-graphrag-20260929-125150.csv
+-rw-r--r--  1 jenniferreif  staff  1151 Sep 29 13:05 /Users/jenniferreif/Projects/graphrag-benchmark-demo/results/scorecard-graphrag-‹redacted: credit-card›.csv
+```

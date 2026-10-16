@@ -1,0 +1,48 @@
+$ source env.sh && mvn -q compile exec:java 2>&1 | tail -100
+
+```
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.fusesource.jansi.internal.JansiLoader in an unnamed module (file:/Users/jenniferreif/.sdkman/candidates/maven/current/lib/jansi-2.4.0.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by com.google.common.util.concurrent.AbstractFuture$UnsafeAtomicHelper (file:/Users/jenniferreif/.sdkman/candidates/maven/current/lib/guava-25.1-android.jar)
+WARNING: Please consider reporting this to the maintainers of class com.google.common.util.concurrent.AbstractFuture$UnsafeAtomicHelper
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+SLF4J(W): No SLF4J providers were found.
+SLF4J(W): Defaulting to no-operation (NOP) logger implementation
+SLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.
+--- Live sanity check (graphrag) ---
+Q: Which release fixed the SAML SSO login timeout bug?
+A: The SAML SSO login timeout bug was fixed in Release Aurora 3.2, which was released on July 1, 2026. This release addressed BUG-101, where SAML-based SSO logins would time out after 30 seconds.
+
+--- Running full benchmark ---
+
+====================================================================================================
+BENCHMARK RESULTS
+====================================================================================================
+[Q1] simple_factual         correctness=2/2  faithfulness=1/2  
+      Q: Which release fixed the SAML SSO login timeout bug?
+      A: The SAML SSO login timeout bug was fixed in Release Aurora 3.2, which was released on July 1, 2026. This release addressed BUG-101, where SAML-based SSO logins ...
+      judge: The answer correctly identifies the release and bug number but includes an unsupported release date and additional detail about the timeout duration.
+[Q2] simple_factual         correctness=1/2  faithfulness=1/2  
+      Q: What is BUG-103 about, and is it fixed?
+      A: BUG-103 is about webhook retries duplicating events when a downstream endpoint responds slowly. The status of this bug is open, and there is no fix scheduled ye...
+      judge: The answer contains the key facts about BUG-103 but includes unsupported information about Ticket TCK-504 and Customer Globex.
+[Q3] multi_hop              correctness=2/2  faithfulness=2/2  
+      Q: Which customers were affected by the SSO login timeout bug?
+      A: The customers affected by the SSO login timeout bug (BUG-101) were Acme Corp (tier: Enterprise) and Globex (tier: Growth).
+      judge: The system's answer accurately identifies the affected customers and includes relevant details consistent with the gold reference.
+[Q4] multi_hop              correctness=2/2  faithfulness=1/2  
+      Q: Umbrella Labs filed a ticket about a bug -- has that bug been fixed, and if so, in which release?
+      A: Yes, the bug reported by Umbrella Labs has been fixed. It was fixed in the release Aurora 3.1, which was released on May 15, 2026. The bug is identified as BUG-...
+      judge: The answer contains all key facts but includes an unsupported detail about the release date.
+[Q5] multi_hop              correctness=0/2  faithfulness=0/2  
+      Q: Which open bugs affect customers on the Enterprise tier?
+      A: The open bug affecting customers on the Enterprise tier is BUG-103, which relates to webhook retries duplicating events when a downstream endpoint responds slow...
+      judge: The system's answer incorrectly states that BUG-103 affects the Enterprise tier, while the gold reference clarifies it affects the Growth tier.
+[Q6] comparison_aggregation correctness=2/2  faithfulness=2/2  
+      Q: How many open tickets does Globex h
+… (truncated, 3504 more characters)
+```

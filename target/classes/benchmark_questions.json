@@ -1,0 +1,86 @@
+[
+  {
+    "id": "Q1",
+    "category": "simple_factual",
+    "question": "Which release fixed the SAML SSO login timeout bug?",
+    "goldAnswer": "Aurora 3.2 fixed BUG-101, the SAML SSO login timeout bug.",
+    "unanswerable": false
+  },
+  {
+    "id": "Q2",
+    "category": "simple_factual",
+    "question": "What is BUG-103 about, and is it fixed?",
+    "goldAnswer": "BUG-103 is webhook retries duplicating events on slow downstream endpoints. It is still open / unfixed.",
+    "unanswerable": false
+  },
+  {
+    "id": "Q3",
+    "category": "multi_hop",
+    "question": "Which customers were affected by the SSO login timeout bug?",
+    "goldAnswer": "Acme Corp and Globex, via tickets TCK-501 and TCK-502.",
+    "unanswerable": false
+  },
+  {
+    "id": "Q4",
+    "category": "multi_hop",
+    "question": "Umbrella Labs filed a ticket about a bug -- has that bug been fixed, and if so, in which release?",
+    "goldAnswer": "Yes. Umbrella Labs reported BUG-102 (ticket TCK-503), which was fixed in Aurora 3.1.",
+    "unanswerable": false
+  },
+  {
+    "id": "Q5",
+    "category": "multi_hop",
+    "question": "Which open bugs affect customers on the Enterprise tier?",
+    "goldAnswer": "None. The only open bug, BUG-103 (webhook duplication), was reported by Globex, which is on the Growth tier, not Enterprise.",
+    "unanswerable": false
+  },
+  {
+    "id": "Q6",
+    "category": "comparison_aggregation",
+    "question": "Which reported bugs have been fixed, and which are still open?",
+    "goldAnswer": "BUG-101 (SSO Login) was fixed in Aurora 3.2. BUG-102 (Scheduled Workflows) was fixed in Aurora 3.1. BUG-104 (Usage Dashboards) was fixed in Beacon 1.4. BUG-103 (Webhook Triggers) is still open.",
+    "unanswerable": false
+  },
+  {
+    "id": "Q7",
+    "category": "comparison_aggregation",
+    "question": "Compare the support SLA response time for Enterprise vs. Starter tier customers.",
+    "goldAnswer": "Enterprise customers get a 4-hour first response time. Starter customers get a 2 business day first response time.",
+    "unanswerable": false
+  },
+  {
+    "id": "Q8",
+    "category": "temporal",
+    "question": "What changed between Aurora 3.1 and Aurora 3.2?",
+    "goldAnswer": "Aurora 3.1 fixed BUG-102 (scheduled workflows skipping DST transitions). Aurora 3.2 fixed BUG-101 (SAML SSO login timeouts).",
+    "unanswerable": false
+  },
+  {
+    "id": "Q9",
+    "category": "temporal",
+    "question": "Was the webhook duplication bug fixed before or after Aurora 3.2 shipped?",
+    "goldAnswer": "Neither -- BUG-103 is still open/unfixed as of the latest release, Aurora 3.2.",
+    "unanswerable": false
+  },
+  {
+    "id": "Q10",
+    "category": "unanswerable",
+    "question": "What's the refund policy on hardware purchases?",
+    "goldAnswer": "The knowledge base has no hardware refund policy -- the refund policy only covers Aurora and Beacon software subscriptions. The assistant should say it doesn't have this information rather than inventing a hardware policy.",
+    "unanswerable": true
+  },
+  {
+    "id": "Q11",
+    "category": "unanswerable",
+    "question": "Who is Aurora's current VP of Engineering?",
+    "goldAnswer": "The knowledge base contains no personnel or org-chart information. The assistant should say it doesn't know rather than guessing a name.",
+    "unanswerable": true
+  },
+  {
+    "id": "Q12",
+    "category": "multi_hop",
+    "question": "What features does Aurora have, and which of them have had reported bugs?",
+    "goldAnswer": "Aurora has three features: SSO Login, Scheduled Workflows, and Webhook Triggers. SSO Login had BUG-101 (fixed in Aurora 3.2), Scheduled Workflows had BUG-102 (fixed in Aurora 3.1), and Webhook Triggers has BUG-103 (still open).",
+    "unanswerable": false
+  }
+]

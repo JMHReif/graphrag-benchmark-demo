@@ -1,0 +1,1 @@
+We've been tuning the GraphRAG demo's retriever and benchmark for your webinar; just added a report file alongside the CSV in results/. Next: run the benchmark yourself to check scores and review the new report.txt output.

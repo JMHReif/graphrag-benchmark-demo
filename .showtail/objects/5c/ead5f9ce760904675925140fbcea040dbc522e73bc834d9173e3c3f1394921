@@ -1,0 +1,1 @@
+{"sequence":284,"type":"tool_use","sourceId":"conversation:toolu_01BWAXb7maBZa7x4qPh1HBd8:use","timestamp":"2026-09-29T20:44:38.300Z","toolUseId":"toolu_01BWAXb7maBZa7x4qPh1HBd8","toolName":"Bash","input":{"command":"mvn -q compile 2>&1 | grep -v \"^WARNING\"","description":"Compile the project after adding the Jev judge integration"}}

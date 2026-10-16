@@ -1,0 +1,1 @@
+{"sequence":318,"type":"tool_use","sourceId":"conversation:toolu_01Ci1iWmeZDKAszY3mwU5R35:use","timestamp":"2026-09-30T14:44:18.225Z","toolUseId":"toolu_01Ci1iWmeZDKAszY3mwU5R35","toolName":"Read","input":{"file_path":"/Users/jenniferreif/Projects/graphrag-benchmark-demo/src/main/java/com/neo4j/webinar/bench/TypeSafeJudgeScorer.java"}}

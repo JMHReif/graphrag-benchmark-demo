@@ -1,0 +1,80 @@
+Read: /Users/jenniferreif/Projects/graphrag-benchmark-demo/src/main/java/com/neo4j/webinar/bench/LlmJudgeScorer.java
+
+```
+1	package com.neo4j.webinar.bench;
+2	
+3	import com.fasterxml.jackson.databind.JsonNode;
+4	import com.fasterxml.jackson.databind.ObjectMapper;
+5	import dev.langchain4j.model.chat.ChatModel;
+6	
+7	/**
+8	 * Grades one answer against its gold reference using an LLM as the judge.
+9	 *
+10	 * This is deliberately a *separate* model call from the assistant being
+11	 * tested -- the judge prompt is short, strict, and always asks for the same
+12	 * three numbers, which is what makes the benchmark repeatable: run it
+13	 * again after a pipeline change and the score moves because the pipeline
+14	 * changed, not because the grading did.
+15	 */
+16	public class LlmJudgeScorer {
+17	
+18	    private final ChatModel judgeModel;
+19	    private final ObjectMapper mapper = new ObjectMapper();
+20	
+21	    public LlmJudgeScorer(ChatModel judgeModel) {
+22	        this.judgeModel = judgeModel;
+23	    }
+24	
+25	    public ScoredAnswer score(BenchmarkQuestion question, String actualAnswer) {
+26	        String prompt = """
+27	                You are grading a support assistant's answer against a gold reference.
+28	                Be strict: only award full credit when the answer actually contains the
+29	                key facts, not just plausible-sounding text.
+30	
+31	                Question: %s
+32	                Question category: %s
+33	                Is this question intentionally unanswerable from the knowledge base?: %s
+34	                Gold reference answer: %s
+35	
+36	                System's actual answer: %s
+37	
+38	                Score the system's answer:
+39	                - correctness: 0 (wrong or missing the key facts), 1 (partially correct),
+40	                  or 2 (fully correct and consistent with the gold reference)
+41	                - faithfulness: 0 (states facts not supported by any real context),
+42	                  1 (mostly grounded, minor unsupported additions), or 2 (fully grounded)
+43	                - appropriate_refusal: for unanswerable questions, true only if the system
+44	                  plainly declined instead of guessing; false if it fabricated an answer.
+45	                  For answerable questions, always put true here (not applicable).
+46	
+47	                Respond with ONLY minified JSON, no markdown fencing, no commentary,
+48	                exactly this shape:
+49	                {"correctness": 0, "faithfulness": 0, "appropriate_refusal": true, "rationale": "one sentence"}
+50	                """.formatted(question.question(), question.category(), question.unanswerable(),
+51	                question.goldAnswer(), actualAnswer);
+52	
+53	        String raw = judgeModel.chat(prompt);
+54	        JsonNode json = parseJson(raw);
+55	
+56	        return new ScoredAnswer(
+57	                question,
+58	                actualAnswer,
+59	                json.path("correctness").asInt(0),
+60	                json.path("faithfulness").asInt(0),
+61	                json.path("appropriate_refusal").asBoolean(!question.unanswerable()),
+62	                json.path("rationale").asText("")
+63	        );
+64	    }
+65	
+66	    /** Judge models occasionally wrap JSON in prose or a code fence; trim to the object. */
+67	    private JsonNode parseJson(String raw) {
+68	        String trimmed = raw.substring(raw.indexOf('{'), raw.lastIndexOf('}') + 1);
+69	        try {
+70	            return mapper.readTree(trimmed);
+71	        } catch (Exception e) {
+72	            throw new IllegalStateException("Judge did not return valid JSON:\n" + raw, e);
+73	        }
+74	    }
+75	}
+76	
+```

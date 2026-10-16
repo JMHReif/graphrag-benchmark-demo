@@ -1,0 +1,24 @@
+$ ls -la /Users/jenniferreif/Projects/graphrag-benchmark-demo && find /Users/jenniferreif/Projects/graphrag-benchmark-demo -maxdepth 2 -type f | head -50
+
+```
+total 32
+drwxr-xr-x@   7 jenniferreif  staff   224 Sep 29 11:10 .
+drwxr-xr-x  229 jenniferreif  staff  7328 Sep 29 11:08 ..
+drwxr-xr-x@   8 jenniferreif  staff   256 Sep 29 11:09 .idea
+drwxr-xr-x   10 jenniferreif  staff   320 Sep 29 11:11 .showtail
+-rw-r--r--@   1 jenniferreif  staff  5666 Sep 28 11:15 pom.xml
+-rw-r--r--@   1 jenniferreif  staff  4670 Sep 28 11:14 README.md
+drwxr-xr-x@   3 jenniferreif  staff    96 Sep 28 11:08 src
+/Users/jenniferreif/Projects/graphrag-benchmark-demo/pom.xml
+/Users/jenniferreif/Projects/graphrag-benchmark-demo/README.md
+/Users/jenniferreif/Projects/graphrag-benchmark-demo/.showtail/state.json
+/Users/jenniferreif/Projects/graphrag-benchmark-demo/.showtail/config.json
+/Users/jenniferreif/Projects/graphrag-benchmark-demo/.showtail/.gitignore
+/Users/jenniferreif/Projects/graphrag-benchmark-demo/.showtail/.gitattributes
+/Users/jenniferreif/Projects/graphrag-benchmark-demo/.idea/encodings.xml
+/Users/jenniferreif/Projects/graphrag-benchmark-demo/.idea/jarRepositories.xml
+/Users/jenniferreif/Projects/graphrag-benchmark-demo/.idea/.gitignore
+/Users/jenniferreif/Projects/graphrag-benchmark-demo/.idea/workspace.xml
+/Users/jenniferreif/Projects/graphrag-benchmark-demo/.idea/misc.xml
+/Users/jenniferreif/Projects/graphrag-benchmark-demo/.idea/compiler.xml
+```

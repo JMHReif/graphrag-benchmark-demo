@@ -1,0 +1,9 @@
+$ source /Users/jenniferreif/Projects/graphrag-benchmark-demo/env.sh && neo4j-cli query "MATCH (n) RETURN count(n) AS nodeCount" --env /Users/jenniferreif/Projects/graphrag-benchmark-demo/env.sh --format toon 2>&1 | tail -5
+
+```
+  exit_code: 8
+  message: "query: TransactionExecutionLimit: timeout (exceeded max retry time: 10s) after 4 attempts, last error: ConnectivityError: dial tcp 127.0.0.1:7687: connect: connection refused"
+  retryable: true
+  suggestion: "could not reach Neo4j: verify the connection URI and that the database is running (e.g. `neo4j-cli docker list`)"
+Error: query: TransactionExecutionLimit: timeout (exceeded max retry time: 10s) after 4 attempts, last error: ConnectivityError: dial tcp 127.0.0.1:7687: connect: connection refused (exit 8)
+```

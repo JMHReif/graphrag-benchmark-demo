@@ -1,0 +1,99 @@
+Read: /Users/jenniferreif/Projects/graphrag-benchmark-demo/src/main/java/com/neo4j/webinar/retrieval/GraphRagContentRetriever.java
+
+```
+1	package com.neo4j.webinar.retrieval;
+2	
+3	import dev.langchain4j.data.embedding.Embedding;
+4	import dev.langchain4j.model.embedding.EmbeddingModel;
+5	import dev.langchain4j.rag.content.Content;
+6	import dev.langchain4j.rag.content.retriever.ContentRetriever;
+7	import dev.langchain4j.rag.query.Query;
+8	import org.neo4j.driver.Driver;
+9	import org.neo4j.driver.Record;
+10	import org.neo4j.driver.Session;
+11	import org.neo4j.driver.types.Node;
+12	import org.neo4j.driver.types.Path;
+13	import org.neo4j.driver.types.Relationship;
+14	
+15	import java.util.ArrayList;
+16	import java.util.LinkedHashMap;
+17	import java.util.LinkedHashSet;
+18	import java.util.List;
+19	import java.util.Map;
+20	import java.util.Set;
+21	
+22	/**
+23	 * The GraphRAG retriever: this is the piece that turns plain vector RAG into
+24	 * *graph* RAG.
+25	 *
+26	 * <pre>
+27	 *   1. Embed the question.
+28	 *   2. Vector search over :Chunk.embedding to find the most relevant
+29	 *      free-text passages ("seed" nodes) -- this is exactly what a
+30	 *      vector-only pipeline would stop at.
+31	 *   3. For each seed chunk, walk up to two hops out through the graph
+32	 *      (Chunk -[:MENTIONS]-> entity -[any]- ... ) to pull in connected
+33	 *      facts a text chunk alone can't express: which release fixed a bug,
+34	 *      which customers reported it (Bug -> Ticket -> Customer is two hops),
+35	 *      whether it's still open, etc.
+36	 *   4. Return chunk text + graph facts together as retrieved Content.
+37	 * </pre>
+38	 */
+39	public class GraphRagContentRetriever implements ContentRetriever {
+40	
+41	    private static final String VECTOR_INDEX = "chunkEmbeddings";
+42	
+43	    private final Driver driver;
+44	    private final EmbeddingModel embeddingModel;
+45	    private final int maxSeedChunks;
+46	
+47	    public GraphRagContentRetriever(Driver driver, EmbeddingModel embeddingModel, int maxSeedChunks) {
+48	        this.driver = driver;
+49	        this.embeddingModel = embeddingModel;
+50	        this.maxSeedChunks = maxSeedChunks;
+51	    }
+52	
+53	    @Override
+54	    public List<Content> retrieve(Query query) {
+55	        Embedding queryEmbedding = embeddingModel.embed(query.text()).content();
+56	        List<Content> contents = new ArrayList<>();
+57	
+58	        try (Session session = driver.session()) {
+59	            List<Record> seeds = session.run("""
+60	                    CALL db.index.vector.queryNodes($indexName, $k, $queryVector)
+61	                    YIELD node, score
+62	                    RETURN node.id AS id, node.text AS text, score
+63	                    """, Map.of(
+64	                    "indexName", VECTOR_INDEX,
+65	                    "k", maxSeedChunks,
+66	                    "queryVector", queryEmbedding.vectorAsList()
+67	            )).list();
+68	
+69	            for (Record seed : seeds) {
+70	                String chunkId = seed.get("id").asString();
+71	                String chunkText = seed.get("text").asString();
+72	                String graphFacts = expandGraphFacts(session, chunkId);
+73	
+74	                String combined = "Source passage [" + chunkId + "]: " + chunkText +
+75	                        (graphFacts.isBlank() ? "" : "\nRelated graph facts:\n" + graphFacts);
+76	
+77	                contents.add(Content.from(combined));
+78	            }
+79	        }
+80	        return contents;
+81	    }
+82	
+83	    /**
+84	     * Up to two-hop graph expansion from every entity a chunk MENTIONS.
+85	     * Two hops matters for facts like Bug -[REPORTS]- Ticket -[FILED_BY]- Customer --
+86	     * one hop only reaches the Ticket, never the Customer who actually filed it.
+87	     */
+88	    private String expandGraphFacts(Session session, String chunkId) {
+89	        List<Record> rows = session.run("""
+90	                MATCH (c:Chunk {id: $chunkId})-[:MENTIONS]->(entity)
+91	                MATCH path = (entity)-[*1..2]-(other)
+92	                WHERE NONE(n IN nodes(path)[1..] WHERE n:Chunk OR n = entity)
+93	                RETURN entity, path
+94	         
+… (truncated, 3030 more characters)
+```

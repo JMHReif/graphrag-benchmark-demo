@@ -1,0 +1,1 @@
+We've been tuning the GraphRAG webinar demo's benchmark; just finished wiring in an optional Jev-judge run via `-Dexec.args=jev`. Next: fill in JEV_API_KEY in env.sh and try that run yourself.

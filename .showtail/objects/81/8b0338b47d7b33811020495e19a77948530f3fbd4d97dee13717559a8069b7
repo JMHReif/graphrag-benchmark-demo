@@ -1,0 +1,29 @@
+Read: /Users/jenniferreif/Projects/graphrag-benchmark-demo/src/main/java/com/neo4j/webinar/retrieval/GraphRagContentRetriever.java
+
+```
+1	package com.neo4j.webinar.retrieval;
+2	
+3	import dev.langchain4j.data.embedding.Embedding;
+4	import dev.langchain4j.model.embedding.EmbeddingModel;
+5	import dev.langchain4j.rag.content.Content;
+6	import dev.langchain4j.rag.content.retriever.ContentRetriever;
+7	import dev.langchain4j.rag.query.Query;
+8	import org.neo4j.driver.Driver;
+9	import org.neo4j.driver.Record;
+10	import org.neo4j.driver.Session;
+11	import org.neo4j.driver.types.Node;
+12	import org.neo4j.driver.types.Path;
+13	import org.neo4j.driver.types.Relationship;
+14	
+15	import java.util.ArrayList;
+16	import java.util.HashSet;
+17	import java.util.LinkedHashMap;
+18	import java.util.LinkedHashSet;
+19	import java.util.List;
+20	import java.util.Map;
+21	import java.util.Set;
+22	
+23	/**
+24	 * The GraphRAG retriever: this is the piece that turns plain vector RAG into
+25	 * *graph* RAG.
+```

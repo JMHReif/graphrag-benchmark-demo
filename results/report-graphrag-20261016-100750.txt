@@ -1,0 +1,61 @@
+
+====================================================================================================
+BENCHMARK RESULTS
+====================================================================================================
+[Q1] simple_factual         correctness=2.00/2  faithfulness=1.00/2  
+      Q: Which release fixed the SAML SSO login timeout bug?
+      A: The SAML SSO login timeout bug was fixed in Release Aurora 3.2, which was released on July 1, 2026. This fix addresses BUG-101, where SAML-based SSO logins would time out after 30 seconds.
+      judge: The answer correctly identifies the release and bug number but includes an unsupported release date.
+[Q2] simple_factual         correctness=2.00/2  faithfulness=2.00/2  
+      Q: What is BUG-103 about, and is it fixed?
+      A: BUG-103 is about webhook retries duplicating events when a downstream endpoint responds slowly. The status of this bug is open, and there is no fix scheduled yet.
+      judge: The system's answer accurately reflects the key facts about BUG-103 and its status.
+[Q3] multi_hop              correctness=2.00/2  faithfulness=2.00/2  
+      Q: Which customers were affected by the SSO login timeout bug?
+      A: The customers affected by the SSO login timeout bug (BUG-101) were Acme Corp (tier: Enterprise) and Globex (tier: Growth).
+      judge: The system's answer accurately identifies the affected customers and includes relevant details consistent with the gold reference.
+[Q4] multi_hop              correctness=2.00/2  faithfulness=2.00/2  
+      Q: Umbrella Labs filed a ticket about a bug -- has that bug been fixed, and if so, in which release?
+      A: Yes, the bug reported by Umbrella Labs has been fixed. It was fixed in Release Aurora 3.1, which was released on May 15, 2026. The bug ID is BUG-102, and it addressed the issue where scheduled workflows would silently skip a run during daylight-saving transitions. The related ticket is TCK-503, which is closed.
+      judge: The system's answer contains all key facts and is consistent with the gold reference.
+[Q5] multi_hop              correctness=0.00/2  faithfulness=0.00/2  
+      Q: Which open bugs affect customers on the Enterprise tier?
+      A: The open bug affecting customers on the Enterprise tier is:  - **Bug BUG-103**: "Webhook retries can duplicate events on slow endpoints." Status: open, no fix scheduled yet. This bug affects the feature Webhook Triggers, which is part of the Aurora product used by the customer Acme Corp (tier: Enterprise).
+      judge: The system's answer incorrectly states that BUG-103 affects the Enterprise tier, while the gold reference clarifies it affects only the Growth tier.
+[Q6] comparison_aggregation correctness=2.00/2  faithfulness=2.00/2  
+      Q: Which reported bugs have been fixed, and which are still open?
+      A: **Fixed Bugs:** 1. **BUG-101** ("SAML SSO logins time out after 30 seconds") - severity: high, status: fixed (fixed in Release Aurora 3.2 on July 1, 2026). 2. **BUG-102** ("Scheduled workflows skip a run across DST transitions") - severity: medium, status: fixed (fixed in Release Aurora 3.1 on May 15, 2026). 3. **BUG-104** ("Usage dashboard totals undercount deleted users") - severity: low, status: fixed (fixed in Release Beacon 1.4 on June 10, 2026).  **Open Bugs:** 1. **BUG-103** ("Webhook retries duplicate events on slow endpoints") - severity: high, status: open (no fix scheduled yet, reported in Ticket TCK-504).
+      judge: The system's answer accurately lists all fixed and open bugs with their details, matching the gold reference.
+[Q7] comparison_aggregation correctness=2.00/2  faithfulness=2.00/2  
+      Q: Compare the support SLA response time for Enterprise vs. Starter tier customers.
+      A: Enterprise customers receive a 4-hour first response time, while Starter customers receive a 2 business day first response time. This SLA applies to all software products.
+      judge: The system's answer accurately reflects the key facts from the gold reference.
+[Q8] temporal               correctness=2.00/2  faithfulness=2.00/2  
+      Q: What changed between Aurora 3.1 and Aurora 3.2?
+      A: Between Aurora 3.1 and Aurora 3.2, the following changes occurred:  - Aurora 3.1 (released on May 15, 2026) fixed BUG-102, which addressed an issue where scheduled workflows would silently skip a run during daylight-saving transitions. - Aurora 3.2 (released on July 1, 2026) fixed BUG-101, a critical issue where SAML-based SSO logins would time out after 30 seconds, preventing login failures during SAML redirects.  No other specific changes between these versions are mentioned in the provided context.
+      judge: The system's answer accurately reflects the changes between Aurora 3.1 and Aurora 3.2 as stated in the gold reference.
+[Q9] temporal               correctness=2.00/2  faithfulness=2.00/2  
+      Q: Was the webhook duplication bug fixed before or after Aurora 3.2 shipped?
+      A: The webhook duplication bug (BUG-103) is still open and has no fix scheduled yet. Therefore, it was not fixed before or after Aurora 3.2 shipped, as it remains unresolved.
+      judge: The system's answer accurately reflects that the webhook duplication bug (BUG-103) is still open and was not fixed before or after Aurora 3.2, aligning with the gold reference.
+[Q10] unanswerable           correctness=0.00/2  faithfulness=0.00/2  
+      Q: What's the refund policy on hardware purchases?
+      A: I don't have that information in the knowledge base.
+      judge: The answer lacks key facts about the refund policy and does not clarify that it only covers software subscriptions.
+[Q11] unanswerable           correctness=2.00/2  faithfulness=2.00/2  
+      Q: Who is Aurora's current VP of Engineering?
+      A: I don't have that information in the knowledge base.
+      judge: The system correctly stated it does not have the information in the knowledge base.
+[Q12] multi_hop              correctness=2.00/2  faithfulness=2.00/2  
+      Q: What features does Aurora have, and which of them have had reported bugs?
+      A: Aurora has the following features: 1. Scheduled Workflows 2. SSO Login 3. Webhook Triggers  Reported bugs associated with these features include:  - **Scheduled Workflows**:    - Bug ID: **BUG-102** ("Scheduled workflows skip a run across DST transitions") - severity: medium, status: fixed. This bug was fixed in Release Aurora 3.1 (released May 15, 2026).  - **SSO Login**:    - Bug ID: **BUG-101** ("SAML SSO logins time out after 30 seconds") - severity: high, status: fixed. This bug was fixed in Release Aurora 3.2 (released July 1, 2026).  - **Webhook Triggers**:    - Bug ID: **BUG-103** ("Webhook retries duplicate events on slow endpoints") - severity: high, status: open. This bug is currently unresolved.   If you need more details about any specific bug or feature, please let me know!
+      judge: The system's answer accurately lists the features of Aurora and correctly identifies the associated bugs, their statuses, and severity.
+----------------------------------------------------------------------------------------------------
+simple_factual         avg correctness=2.00  avg faithfulness=1.50  (n=2)
+multi_hop              avg correctness=1.50  avg faithfulness=1.50  (n=4)
+comparison_aggregation avg correctness=2.00  avg faithfulness=2.00  (n=2)
+temporal               avg correctness=2.00  avg faithfulness=2.00  (n=2)
+unanswerable           avg correctness=1.00  avg faithfulness=1.00  (n=2)
+----------------------------------------------------------------------------------------------------
+OVERALL  avg correctness=1.67/2  avg faithfulness=1.58/2  hallucination risks=0/2
+====================================================================================================

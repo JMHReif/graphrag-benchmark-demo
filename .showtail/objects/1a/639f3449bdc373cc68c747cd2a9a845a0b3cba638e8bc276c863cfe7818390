@@ -1,0 +1,1 @@
+{"sequence":127,"type":"assistant_text","sourceId":"conversation:8efe4e36-1e47-4205-a87b-2d68bc100f56:text:0","timestamp":"2026-09-29T19:06:23.097Z","text":"Now the regression fix in `expandGraphFacts` — make the path lookup `OPTIONAL`:"}

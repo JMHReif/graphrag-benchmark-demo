@@ -1,0 +1,93 @@
+Read: /Users/jenniferreif/Projects/graphrag-benchmark-demo/src/main/java/com/neo4j/webinar/ingest/GraphSeeder.java
+
+```
+1	package com.neo4j.webinar.ingest;
+2	
+3	import dev.langchain4j.data.embedding.Embedding;
+4	import dev.langchain4j.model.embedding.EmbeddingModel;
+5	import org.neo4j.driver.Driver;
+6	import org.neo4j.driver.Session;
+7	import org.neo4j.driver.Values;
+8	
+9	import java.util.List;
+10	import java.util.Map;
+11	
+12	/**
+13	 * Loads a small "software support" knowledge graph into Neo4j:
+14	 *
+15	 *   (:Product)-[:HAS_FEATURE]->(:Feature)
+16	 *   (:Release)-[:OF_PRODUCT]->(:Product)
+17	 *   (:Release)-[:FIXES]->(:Bug)-[:AFFECTS]->(:Feature)
+18	 *   (:Customer)-[:SUBSCRIBES_TO]->(:Product)
+19	 *   (:Ticket)-[:FILED_BY]->(:Customer)
+20	 *   (:Ticket)-[:REPORTS]->(:Bug)
+21	 *   (:Chunk)-[:MENTIONS]->(any of the above)
+22	 *
+23	 * Chunk nodes hold the free-text (release notes, policy text) that gets
+24	 * embedded for vector search. Everything else is the graph context that a
+25	 * pure vector-RAG chunk can't see on its own -- which customers were
+26	 * affected, which release fixed a bug, whether it's still open, etc.
+27	 * That's the "graph" half of GraphRAG.
+28	 *
+29	 * Deliberately over-explicit and re-runnable (MERGE everywhere) so you can
+30	 * re-seed mid-demo without worrying about duplicates.
+31	 */
+32	public class GraphSeeder {
+33	
+34	    private final Driver driver;
+35	    private final EmbeddingModel embeddingModel;
+36	
+37	    public GraphSeeder(Driver driver, EmbeddingModel embeddingModel) {
+38	        this.driver = driver;
+39	        this.embeddingModel = embeddingModel;
+40	    }
+41	
+42	    public void seed() {
+43	        try (Session session = driver.session()) {
+44	            createConstraintsAndIndex(session);
+45	            seedProductsAndFeatures(session);
+46	            seedReleasesAndBugs(session);
+47	            seedCustomersAndTickets(session);
+48	            seedPolicies(session);
+49	            seedChunks(session);
+50	        }
+51	        System.out.println("Graph seeded: products, features, releases, bugs, customers, tickets, policies, chunks.");
+52	    }
+53	
+54	    private void createConstraintsAndIndex(Session session) {
+55	        session.run("CREATE CONSTRAINT product_name IF NOT EXISTS FOR (p:Product) REQUIRE p.name IS UNIQUE");
+56	        session.run("CREATE CONSTRAINT bug_id IF NOT EXISTS FOR (b:Bug) REQUIRE b.id IS UNIQUE");
+57	        session.run("CREATE CONSTRAINT release_version IF NOT EXISTS FOR (r:Release) REQUIRE r.version IS UNIQUE");
+58	        session.run("CREATE CONSTRAINT customer_name IF NOT EXISTS FOR (c:Customer) REQUIRE c.name IS UNIQUE");
+59	        session.run("CREATE CONSTRAINT ticket_id IF NOT EXISTS FOR (t:Ticket) REQUIRE t.id IS UNIQUE");
+60	        session.run("CREATE CONSTRAINT chunk_id IF NOT EXISTS FOR (c:Chunk) REQUIRE c.id IS UNIQUE");
+61	        session.run("""
+62	                CREATE VECTOR INDEX chunkEmbeddings IF NOT EXISTS
+63	                FOR (c:Chunk) ON (c.embedding)
+64	                OPTIONS {indexConfig: {
+65	                  `vector.dimensions`: $dim,
+66	                  `vector.similarity_function`: 'cosine'
+67	                }}
+68	                """, Map.of("dim", embeddingModel.dimension() > 0 ? embeddingModel.dimension() : 1536));
+69	    }
+70	
+71	    private void seedProductsAndFeatures(Session session) {
+72	        session.run("""
+73	                UNWIND $rows AS row
+74	                MERGE (p:Product {name: row.product})
+75	                MERGE (f:Feature {name: row.feature})
+76	                MERGE (f)-[:PART_OF]->(p)
+77	                """, Map.of("rows", List.of(
+78	                Map.of("product", "Aurora", "feature", "SSO Login"),
+79	                Map.of("product", "Aurora", "feature", "Scheduled Workflows"),
+80	                Map.of("product", "Aurora", "feature", "Webhook Triggers"),
+81	                Map.of("product", "Beacon", "feature", "Usage Dashboards")
+82	        )));
+83	    }
+84	
+85	    private void seedReleasesAndBugs(Session session) {
+86	        session.run("""
+87	                UNWIND $rows AS row
+88	                MERGE (r
+… (truncated, 9903 more characters)
+```

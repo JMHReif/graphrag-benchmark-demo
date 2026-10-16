@@ -1,0 +1,12 @@
+/Users/jenniferreif/Projects/graphrag-benchmark-demo/src/main/java/com/neo4j/webinar/Config.java
+/Users/jenniferreif/Projects/graphrag-benchmark-demo/src/main/java/com/neo4j/webinar/Main.java
+/Users/jenniferreif/Projects/graphrag-benchmark-demo/src/main/java/com/neo4j/webinar/SupportAssistant.java
+/Users/jenniferreif/Projects/graphrag-benchmark-demo/src/main/java/com/neo4j/webinar/bench/BenchmarkQuestion.java
+/Users/jenniferreif/Projects/graphrag-benchmark-demo/src/main/java/com/neo4j/webinar/bench/BenchmarkRunner.java
+/Users/jenniferreif/Projects/graphrag-benchmark-demo/src/main/java/com/neo4j/webinar/bench/LlmJudgeScorer.java
+/Users/jenniferreif/Projects/graphrag-benchmark-demo/src/main/java/com/neo4j/webinar/bench/ScoredAnswer.java
+/Users/jenniferreif/Projects/graphrag-benchmark-demo/src/main/java/com/neo4j/webinar/bench/Scorer.java
+/Users/jenniferreif/Projects/graphrag-benchmark-demo/src/main/java/com/neo4j/webinar/bench/TypeSafeJudgeScorer.java
+/Users/jenniferreif/Projects/graphrag-benchmark-demo/src/main/java/com/neo4j/webinar/ingest/GraphSeeder.java
+/Users/jenniferreif/Projects/graphrag-benchmark-demo/src/main/java/com/neo4j/webinar/retrieval/GraphRagContentRetriever.java
+/Users/jenniferreif/Projects/graphrag-benchmark-demo/src/main/java/com/neo4j/webinar/retrieval/VectorOnlyContentRetriever.java

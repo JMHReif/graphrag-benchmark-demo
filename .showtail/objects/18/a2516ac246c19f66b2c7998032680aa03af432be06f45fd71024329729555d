@@ -1,0 +1,1 @@
+Couldn't we simplify the expandGraphFacts query where it just doesn't traverse the MENTIONS relationship, since that is what connects Chunk nodes to others?
