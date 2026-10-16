@@ -1,1 +1,0 @@
-{"sequence":150,"type":"assistant_text","sourceId":"conversation:6a36c33f-3995-432e-880b-7cb41623f59d:text:0","timestamp":"2026-09-29T19:13:41.066Z","text":"Fair — reverting the entity-matching/filtering machinery and keeping this to a plain top-k vector search. Let's check the actual recall numbers to decide 3 vs 4 honestly rather than guess."}

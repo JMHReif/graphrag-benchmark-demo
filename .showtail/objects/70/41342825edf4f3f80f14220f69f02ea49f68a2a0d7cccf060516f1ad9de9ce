@@ -1,6 +1,0 @@
--         try (PrintStream out = new PrintStream(Files.newOutputStream(file))) {
--             printReport(results, out);
--         }
-+         try (PrintStream out = new PrintStream(Files.newOutputStream(file))) {
-+             printReport(results, out, 0);
-+         }

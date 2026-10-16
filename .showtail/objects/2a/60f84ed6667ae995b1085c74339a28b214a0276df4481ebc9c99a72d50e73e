@@ -1,1 +1,0 @@
-{"sequence":175,"type":"tool_use","sourceId":"conversation:toolu_01TonQrYthKnhfaij8DGAAAU:use","timestamp":"2026-09-29T19:24:17.977Z","toolUseId":"toolu_01TonQrYthKnhfaij8DGAAAU","toolName":"Bash","input":{"command":"mvn -q compile 2>&1 | grep -v \"^WARNING\"","description":"Compile to verify the simplified Cypher query"}}

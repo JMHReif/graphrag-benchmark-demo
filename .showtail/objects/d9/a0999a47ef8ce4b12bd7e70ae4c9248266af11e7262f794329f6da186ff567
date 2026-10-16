@@ -1,1 +1,0 @@
-{"sequence":66,"type":"tool_use","sourceId":"conversation:toolu_01GmJYwcUYB2WLJ588M3pLGA:use","timestamp":"2026-09-29T18:15:35.724Z","toolUseId":"toolu_01GmJYwcUYB2WLJ588M3pLGA","toolName":"Read","input":{"file_path":"/Users/jenniferreif/Projects/graphrag-benchmark-demo/src/main/resources/benchmark_questions.json"}}

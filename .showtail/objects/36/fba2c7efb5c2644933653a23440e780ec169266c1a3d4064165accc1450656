@@ -1,1 +1,0 @@
-You're building the GraphRAG benchmark demo for the webinar. We just fixed the context-length crash in the retriever; next step is rerunning mvn compile exec:java to confirm the sanity check and full benchmark pass. (disable recaps in /config)

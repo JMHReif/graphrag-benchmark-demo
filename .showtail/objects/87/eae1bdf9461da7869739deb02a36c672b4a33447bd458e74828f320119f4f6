@@ -1,8 +1,0 @@
-Confirmed — the 2-hop change I made earlier introduced a real regression: because `expandGraphFacts` now uses a *mandatory* `MATCH path = ...`, any chunk whose only mentioned entity has no further graph relationships (like the two `Policy` chunks — they're standalone nodes with no relationships beyond the `MENTIONS` edge, which gets excluded) returns **zero rows**, so the entity doesn't even get its own description included anymore. That's very likely why Q7 keeps failing.
-
-Here's the plan, which also gives you the "wider net + graph filter" behavior you asked for:
-
-1. **Fix the regression**: make the path lookup `OPTIONAL MATCH` so an entity with no further hops still gets its own fact line.
-2. **Widen then filter**: pull a slightly bigger vector candidate pool, then check if the question literally names something in the graph (a product, feature, release, bug, customer, or policy). If it does, keep only candidates within 2 hops of that named thing — dropping vector-similar-but-off-topic chunks (this is exactly Q12's Aurora-vs-Beacon problem: C4/Beacon currently sneaks into the top-3 despite the question naming "Aurora"). If nothing is named (like Q6 or Q7), skip the filter and keep the widened pool — so broad, no-specific-entity questions still get full recall.
-
-Let me implement it.

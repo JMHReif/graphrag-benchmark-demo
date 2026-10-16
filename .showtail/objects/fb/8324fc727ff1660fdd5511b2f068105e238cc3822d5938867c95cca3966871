@@ -1,1 +1,0 @@
-{"sequence":49,"type":"tool_use","sourceId":"conversation:toolu_01SoomzWrJssLzJ7tHqquJAZ:use","timestamp":"2026-09-29T18:12:42.191Z","toolUseId":"toolu_01SoomzWrJssLzJ7tHqquJAZ","toolName":"Read","input":{"file_path":"/Users/jenniferreif/Projects/graphrag-benchmark-demo/results/scorecard-graphrag-‹redacted: credit-card›.csv"}}

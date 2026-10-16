@@ -1,1 +1,0 @@
-{"sequence":204,"type":"tool_result","sourceId":"conversation:toolu_014UdLk3cVxCWj9jvmgXKPqT:result","timestamp":"2026-09-29T19:56:34.063Z","toolUseId":"toolu_014UdLk3cVxCWj9jvmgXKPqT","content":{"matches":["WebSearch","WebFetch"],"query":"select:WebSearch,WebFetch","total_deferred_tools":16}}

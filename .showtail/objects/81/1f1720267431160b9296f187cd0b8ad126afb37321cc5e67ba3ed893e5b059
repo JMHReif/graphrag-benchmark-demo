@@ -1,1 +1,0 @@
-{"sequence":15,"type":"tool_result","sourceId":"conversation:toolu_01Xjd5zgHDjFtT3CpRQRwSk9:result","timestamp":"2026-09-29T16:13:12.820Z","toolUseId":"toolu_01Xjd5zgHDjFtT3CpRQRwSk9","content":{"type":"create","filePath":"/Users/jenniferreif/Projects/graphrag-benchmark-demo/.gitignore","content":"env.sh\n","structuredPatch":[],"originalFile":null,"userModified":false}}

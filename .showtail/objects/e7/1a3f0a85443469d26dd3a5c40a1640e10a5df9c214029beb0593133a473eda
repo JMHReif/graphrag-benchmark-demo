@@ -1,1 +1,0 @@
-{"sequence":336,"type":"tool_use","sourceId":"conversation:toolu_01Cv119Nv1p4ScQbFKyE9XVf:use","timestamp":"2026-09-30T14:53:39.370Z","toolUseId":"toolu_01Cv119Nv1p4ScQbFKyE9XVf","toolName":"Bash","input":{"command":"mvn -q compile 2>&1 | grep -v \"^WARNING\"","description":"Compile after making report-file answers unabridged"}}

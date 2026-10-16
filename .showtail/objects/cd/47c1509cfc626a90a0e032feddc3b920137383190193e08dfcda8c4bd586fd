@@ -1,6 +1,0 @@
-The 0s aren't a scoring bug — I traced them against the gold answers in `benchmark_questions.json`:
-
-- **Q3** ("which customers were affected") and **Q5** ("open bugs affecting Enterprise customers") both need a 2-hop chain: `Bug ← REPORTS ← Ticket ← FILED_BY ← Customer`. `expandGraphFacts` only walks **one** hop out from the chunk-mentioned entity, so it reaches the `Ticket` but never the `Customer`/tier info the gold answer needs — the assistant literally never sees that fact.
-- **Q12** ("Globex's products → features") has a deeper problem: no chunk's free text mentions any customer at all, so vector search can never anchor on `Globex` in the first place — no amount of hop-depth fixes that, since the traversal never starts from the right place.
-
-I'll fix the first, more general problem now: widen the graph expansion from 1 hop to 2 hops, using the actual traversed path so the chain (e.g. `Bug ← REPORTS ← Ticket → FILED_BY → Customer`) shows up as one readable fact.

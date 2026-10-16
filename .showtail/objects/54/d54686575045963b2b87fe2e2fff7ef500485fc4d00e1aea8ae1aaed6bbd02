@@ -1,8 +1,0 @@
--     private final Function<String, String> assistant;
--     private final LlmJudgeScorer scorer;
-- 
--     public BenchmarkRunner(Function<String, String> assistant, LlmJudgeScorer scorer) {
-+     private final Function<String, String> assistant;
-+     private final Scorer scorer;
-+ 
-+     public BenchmarkRunner(Function<String, String> assistant, Scorer scorer) {

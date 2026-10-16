@@ -1,6 +1,0 @@
-Simplified both:
-
-- **Q6**: "Which reported bugs have been fixed, and which are still open?"
-- **Q12**: "What features does Aurora have, and which of them have had reported bugs?"
-
-Same underlying test (Q6 = prose aggregation across bug/release chunks, Q12 = graph hop from Product to enumerate Features, then to each one's bug status), just without the setup clauses. Want me to run the benchmark to see how they score?

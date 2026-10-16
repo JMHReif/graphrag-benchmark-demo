@@ -1,1 +1,0 @@
-{"sequence":84,"type":"tool_use","sourceId":"conversation:toolu_01DQDFYZXWXbJXxUa7r49NsG:use","timestamp":"2026-09-29T18:18:23.200Z","toolUseId":"toolu_01DQDFYZXWXbJXxUa7r49NsG","toolName":"Bash","input":{"command":"source env.sh && mvn -q compile exec:java 2>&1 | tail -100","description":"Run the GraphRAG sanity check and full benchmark with the 2-hop fix","timeout":180000}}

@@ -1,9 +1,0 @@
-- export NEO4J_URI=bolt://localhost:7687
-- export NEO4J_USER=neo4j
-- export NEO4J_PASSWORD=Testing123
-+ export NEO4J_URI=bolt://localhost:7687
-+ export NEO4J_USER=neo4j
-+ export NEO4J_PASSWORD=Testing123
-+ 
-+ # Only needed for `mvn compile exec:java -Dexec.args=jev`
-+ export JEV_API_KEY=...

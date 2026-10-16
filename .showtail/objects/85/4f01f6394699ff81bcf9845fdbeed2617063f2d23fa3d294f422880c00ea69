@@ -1,1 +1,0 @@
-Created `env.sh` with `OPENAI_API_KEY` (placeholder — swap in your real key), `NEO4J_URI`, `NEO4J_USER`, and `NEO4J_PASSWORD=Testing123`, and added a `.gitignore` that excludes it. Source it with `source env.sh` before running the app. Note: this directory isn't a git repo yet, so `.gitignore` will take effect once you run `git init`.

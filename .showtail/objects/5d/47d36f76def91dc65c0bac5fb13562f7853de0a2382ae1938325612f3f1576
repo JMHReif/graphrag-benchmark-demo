@@ -1,1 +1,0 @@
-You're building a GraphRAG benchmark demo for Neo4j; a seeding crash in GraphSeeder.java just got fixed. Next: rerun the seed step, and consider rotating your exposed OpenAI key. (disable recaps in /config)

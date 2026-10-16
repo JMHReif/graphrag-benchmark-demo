@@ -1,1 +1,0 @@
-{"sequence":290,"type":"tool_use","sourceId":"conversation:toolu_01DssSu2gTP3vm6fRqLPz2Jp:use","timestamp":"2026-09-29T20:45:02.263Z","toolUseId":"toolu_01DssSu2gTP3vm6fRqLPz2Jp","toolName":"Read","input":{"file_path":"/Users/jenniferreif/Projects/graphrag-benchmark-demo/env.sh"}}

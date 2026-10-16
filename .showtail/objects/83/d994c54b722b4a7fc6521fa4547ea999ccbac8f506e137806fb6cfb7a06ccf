@@ -1,1 +1,0 @@
-{"sequence":171,"type":"user_text","sourceId":"conversation:4b294160-5232-40d7-83dd-12c4c547d477","timestamp":"2026-09-29T19:23:04.486Z","text":"Couldn't we simplify the expandGraphFacts query where it just doesn't traverse the MENTIONS relationship, since that is what connects Chunk nodes to others?"}

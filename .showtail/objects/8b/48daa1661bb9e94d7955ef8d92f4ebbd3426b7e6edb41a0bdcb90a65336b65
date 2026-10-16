@@ -1,1 +1,0 @@
-That's a good simplification — since `Chunk` nodes are only ever reached via a `MENTIONS` edge (per the schema: it's the only relationship type touching `:Chunk`), excluding that relationship type from the traversal makes the node-label check unnecessary, and it reads closer to the actual intent ("don't walk back into chunk-land").

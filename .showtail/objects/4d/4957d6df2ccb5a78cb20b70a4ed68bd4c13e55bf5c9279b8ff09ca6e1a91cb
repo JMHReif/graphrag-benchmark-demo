@@ -1,9 +1,0 @@
--  *   3. For each seed chunk, walk one hop out through the graph
--  *      (Chunk -[:MENTIONS]-> entity -[any]- neighbor) to pull in connected
--  *      facts a text chunk alone can't express: which release fixed a bug,
--  *      which customers reported it, whether it's still open, etc.
-+  *   3. For each seed chunk, walk up to two hops out through the graph
-+  *      (Chunk -[:MENTIONS]-> entity -[any]- ... ) to pull in connected
-+  *      facts a text chunk alone can't express: which release fixed a bug,
-+  *      which customers reported it (Bug -> Ticket -> Customer is two hops),
-+  *      whether it's still open, etc.

@@ -1,5 +1,0 @@
-$ ls -la .gitignore 2>/dev/null && echo "---exists---" || echo "---no gitignore---"
-
-```
----no gitignore---
-```

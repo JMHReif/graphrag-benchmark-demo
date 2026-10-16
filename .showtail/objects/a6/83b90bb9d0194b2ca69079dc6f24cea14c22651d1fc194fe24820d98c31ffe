@@ -1,1 +1,0 @@
-{"sequence":197,"type":"assistant_text","sourceId":"conversation:f88789f9-fc5e-4536-84e9-b48cd24b4887:text:0","timestamp":"2026-09-29T19:48:05.984Z","text":"Got it — it's a newer model I wouldn't know about. I still need the provider to reason about the integration path (each one needs a different LangChain4j module and auth setup). Which provider is Jev from?"}

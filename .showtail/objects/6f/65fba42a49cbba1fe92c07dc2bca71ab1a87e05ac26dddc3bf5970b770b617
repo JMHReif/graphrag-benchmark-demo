@@ -1,1 +1,0 @@
-Good instinct — before I design the widen-then-filter mechanism, let me check something the 2-hop change may have broken: chunks whose only mentioned entity has *no* further graph connections (like the Policy chunks).

@@ -1,1 +1,0 @@
-We've been improving the GraphRAG demo's benchmark accuracy and now added an optional Jev-judge comparison run. Next: re-run the Jev benchmark to see the fuller answers and level-confidence rationale in the new report file.

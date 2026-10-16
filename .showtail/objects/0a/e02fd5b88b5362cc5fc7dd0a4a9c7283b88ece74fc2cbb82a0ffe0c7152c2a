@@ -1,4 +1,0 @@
--     "question": "Across all four reported bugs in the release notes and known issues, which have been fixed and which are still open?",
--     "goldAnswer": "BUG-101 (SSO Login) was fixed in Aurora 3.2. BUG-102 (Scheduled Workflows) was fixed in Aurora 3.1. BUG-104 (Usage Dashboards) was fixed in Beacon 1.4. BUG-103 (Webhook Triggers) is still open, with no fix scheduled.",
-+     "question": "Which reported bugs have been fixed, and which are still open?",
-+     "goldAnswer": "BUG-101 (SSO Login) was fixed in Aurora 3.2. BUG-102 (Scheduled Workflows) was fixed in Aurora 3.1. BUG-104 (Usage Dashboards) was fixed in Beacon 1.4. BUG-103 (Webhook Triggers) is still open.",

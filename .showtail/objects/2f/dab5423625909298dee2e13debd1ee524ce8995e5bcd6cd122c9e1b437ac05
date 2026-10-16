@@ -1,1 +1,0 @@
-We've been improving the GraphRAG benchmark demo and just added an optional Jev-judge run. You're starting Neo4j now; once it's up, source env.sh and run mvn compile exec:java -Dexec.args=jev.

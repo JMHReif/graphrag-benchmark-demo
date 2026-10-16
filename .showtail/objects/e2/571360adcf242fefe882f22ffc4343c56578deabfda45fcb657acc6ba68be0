@@ -1,4 +1,0 @@
--                 Map.of("id", "BUG-103", "title", "Webhook retries duplicate events on slow endpoints",
--                         "severity", "high", "status", "open", "feature", "Webhook Triggers", "fixedIn", nullValue()),
-+                 Map.of("id", "BUG-103", "title", "Webhook retries duplicate events on slow endpoints",
-+                         "severity", "high", "status", "open", "feature", "Webhook Triggers"),

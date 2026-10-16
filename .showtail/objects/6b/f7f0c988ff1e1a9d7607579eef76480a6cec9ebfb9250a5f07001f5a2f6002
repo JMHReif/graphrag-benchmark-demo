@@ -1,2 +1,0 @@
--         Path csv = runner.writeCsv(results, "graphrag");
-+         Path csv = runner.writeCsv(results, runLabel);

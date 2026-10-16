@@ -1,1 +1,0 @@
-{"sequence":325,"type":"tool_use","sourceId":"conversation:toolu_01LyuFf1DJ92fTEfyR58GXRs:use","timestamp":"2026-09-30T14:44:45.071Z","toolUseId":"toolu_01LyuFf1DJ92fTEfyR58GXRs","toolName":"Bash","input":{"command":"mvn -q compile 2>&1 | grep -v \"^WARNING\"","description":"Compile after adding rationale synthesis to the Jev scorer"}}

@@ -1,1 +1,0 @@
-{"sequence":311,"type":"tool_use","sourceId":"conversation:toolu_01FLHKiPNLccHYHRDoyfjcLA:use","timestamp":"2026-09-30T14:29:40.724Z","toolUseId":"toolu_01FLHKiPNLccHYHRDoyfjcLA","toolName":"Bash","input":{"command":"docker ps -a --filter \"name=neo4j\" --format \"table {{.Names}}\\t{{.Status}}\\t{{.Ports}}\" 2>&1","description":"Check status of the neo4j docker container"}}

@@ -1,1 +1,0 @@
-Hm...for the missing rationale field, just leave blank. As long as the scores are returned, that feels sufficient. For the Score-to-int mapping, how complicated would it be to return the true average (e.g. 1.35)?

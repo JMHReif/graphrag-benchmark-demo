@@ -1,1 +1,0 @@
-{"sequence":144,"type":"tool_use","sourceId":"conversation:toolu_019MW7zxAv4YLU9yeMLGEDWp:use","timestamp":"2026-09-29T19:07:58.750Z","toolUseId":"toolu_019MW7zxAv4YLU9yeMLGEDWp","toolName":"Bash","input":{"command":"mvn -q compile 2>&1 | grep -v \"^WARNING\"","description":"Recompile after removing the truncation"}}

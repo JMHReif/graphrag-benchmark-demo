@@ -1,1 +1,0 @@
-{"sequence":258,"type":"assistant_text","sourceId":"conversation:fc10c7c7-87f4-4ddb-8f28-0522dea54f70:text:0","timestamp":"2026-09-29T20:43:35.390Z","text":"Now let's update `LlmJudgeScorer` to implement `Scorer` and widen to `asDouble`:"}

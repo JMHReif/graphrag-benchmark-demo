@@ -1,4 +1,0 @@
--         System.out.println("\n--- Running full benchmark ---");
--         BenchmarkRunner runner = new BenchmarkRunner(assistant::answer, new LlmJudgeScorer(chatModel));
-+         System.out.println("\n--- Running full benchmark ---");
-+         BenchmarkRunner runner = new BenchmarkRunner(assistant::answer, scorer);

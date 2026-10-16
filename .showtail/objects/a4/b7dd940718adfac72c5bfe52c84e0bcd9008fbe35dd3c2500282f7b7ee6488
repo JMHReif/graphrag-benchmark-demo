@@ -1,1 +1,0 @@
-{"sequence":216,"type":"tool_result","sourceId":"conversation:toolu_01SBRMgTCj6QtUY3PBykXibd:result","timestamp":"2026-09-29T20:15:00.657Z","toolUseId":"toolu_01SBRMgTCj6QtUY3PBykXibd","content":"Exit code 127\n=== dfa1/typesafe-java ===\n(eval):1: command not found: gh\n\n=== Premo-Cloud/typesafe-sdk-java ===\n(eval):3: command not found: gh","isError":true,"exitCode":127}

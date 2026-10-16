@@ -1,1 +1,0 @@
-No. Could you create an env.sh script that exports the OPENAI_API_KEY, and then add that file to the .gitignore? I also need Neo4j credentials added to that script as well for a local db with Testing123 as the password.

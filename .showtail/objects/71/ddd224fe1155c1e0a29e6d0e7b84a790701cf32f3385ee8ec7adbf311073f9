@@ -1,1 +1,0 @@
-Compiles clean. Console output stays truncated at 160 chars (unchanged, still demo-friendly); the `.txt` report files now get the full, untruncated answer for every question, so you can actually verify each score against what the system said.

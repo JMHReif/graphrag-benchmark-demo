@@ -1,1 +1,0 @@
-{"sequence":5,"type":"tool_use","sourceId":"conversation:toolu_01R6qWxZvekPwGyvYE3u28CW:use","timestamp":"2026-09-29T16:11:11.961Z","toolUseId":"toolu_01R6qWxZvekPwGyvYE3u28CW","toolName":"Read","input":{"file_path":"/Users/jenniferreif/Projects/graphrag-benchmark-demo/pom.xml"}}

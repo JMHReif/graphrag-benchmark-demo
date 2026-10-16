@@ -1,1 +1,0 @@
-{"sequence":118,"type":"user_text","sourceId":"conversation:44f7024c-7819-4a34-8927-ccefc10f0640","timestamp":"2026-09-29T19:02:59.269Z","text":"I feel like we should retrieve a couple more chunks in the vector search, but then the graph should filter some of those out. Is there a clean, simple way to do that?"}

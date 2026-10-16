@@ -1,5 +1,0 @@
-$ mvn -q compile 2>&1 | grep -v "^WARNING"
-
-```
-(Bash completed with no output)
-```
