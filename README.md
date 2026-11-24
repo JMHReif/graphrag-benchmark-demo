@@ -104,3 +104,6 @@ run twice.
 Add rows to `src/main/resources/benchmark_questions.json`. Keep `id`
 values stable once you've used them in a report, so score-over-time
 comparisons in `results/*.csv` stay meaningful as the question set grows.
+
+## Resources
+* [Neo4j webinar (Nov 2026)](https://speakerdeck.com/jmhreif/ragbenchmark-oct2026)
